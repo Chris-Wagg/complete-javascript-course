@@ -164,3 +164,44 @@
 // } else {
 // 	console.log(`no one wins`)
 // }
+
+//SWITCH STATEMENTS
+
+// const day = `wednesday`
+
+// switch (day) {
+// 	case `monday`: // day === monday (designed for equality testing)
+// 		console.log(`monday`)
+// 		break
+// 	case `tuesday`:
+// 		console.log(`tuesday`)
+// 		break
+// 	case `wednesday`:
+// 	case `thursday`:
+// 		console.log(`wednesday and thursday`)
+// 		break
+// 	case `friday`:
+// 		console.log(`friday`)
+// 		break
+// 	default:
+// 		console.log(`default`)
+// }
+
+// const age = 69
+// age >= 18 ? console.log(`jeff`) : console.log(`not jeff`)
+
+// (a ? b : c)
+// (if ? than : else)
+
+// const bill = 430
+
+// const tipTwenty = bill * 0.2
+// const tipFifteen = bill * 0.15
+
+// bill >= 50 && bill <= 300
+// 	? console.log(
+// 			`bill = ${bill}, tip = ${tipFifteen} total = ${bill + tipFifteen}`
+// 	  )
+// 	: console.log(
+// 			`bill = ${bill}, tip = ${tipTwenty} total = ${bill + tipTwenty}`
+// 	  )
