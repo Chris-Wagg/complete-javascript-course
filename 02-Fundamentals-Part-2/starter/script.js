@@ -103,26 +103,98 @@
 // const arrayNest = [1, 2, 3, array]
 // console.log(arrayNest)
 
-const array = [1, 2, 3, 4, 5]
-const length = array.push('Jeff') // adds to end
-console.log(array)
-console.log(length)
+// const array = [1, 2, 3, 4, 5]
+// const length = array.push('Jeff') // adds to end
+// console.log(array)
+// console.log(length)
 
-array.unshift('jeff')
-console.log(array)
+// array.unshift('jeff')
+// console.log(array)
 
-array.pop()
-console.log(array)
+// array.pop()
+// console.log(array)
 
-const popped = array.pop()
-console.log(popped)
-// reutrns the popped element
+// const popped = array.pop()
+// console.log(popped)
+// // reutrns the popped element
 
-array.shift()
-console.log(array)
+// array.shift()
+// console.log(array)
 
-console.log(array.indexOf(3))
+// console.log(array.indexOf(3))
 
-array.push('jeff')
-console.log(array)
-console.log(array.includes('jeff'))
+// array.push('jeff')
+// console.log(array)
+// console.log(array.includes('jeff'))
+
+// const calcTip = function (bill) {
+// 	return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2
+// }
+
+// const bills = [125, 555, 44]
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])]
+
+// const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]]
+// this is placing the values from bills/ tips and adding the expressions together
+
+// console.log(bills)
+// console.log(tips)
+// console.log(totals)
+
+// const obj = {
+// 	firstName: 'jeff',
+// 	lastName: 'Jeffjeff',
+// 	age: 21,
+// 	job: 'jeffer',
+// 	friends: ['alan', 'steve', 'jo'],
+//   isCool: true
+// }
+
+// console.log(obj.age)
+// console.log(obj['friends'])
+
+// const nameKey = 'Name'
+// console.log(obj['first' + nameKey]) // concatinates the string to make the key ('first' + 'Name')
+
+// const search = prompt('search a key here')
+// console.log(obj[search])
+// // this will take the value from the prompt and match it to an existing key in the object.
+// // dot notation won't work here because the prompt will return a string. To match using strings you need to use [notation]
+
+// if (obj[search]) {
+// 	console.log('this works')
+// } else {
+// 	console.log('not working')
+// }
+
+// obj.location = 'NZ'
+// obj['twitter'] = '@jeff'
+
+// console.log(obj)
+
+// console.log(
+// 	`${obj.firstName} has ${obj.friends.length} friends and the best friend is ${obj.friends[0]}`
+// )
+
+const obj = {
+	firstName: 'jeff',
+	lastName: 'Jeffjeff',
+	birthYear: 1994,
+	job: 'jeffer',
+	friends: ['alan', 'steve', 'jo'],
+	isCool: true,
+	showNum: function (num) {
+		return num
+	}
+	// showNum: function (year) {
+	// 	return year - this.age
+	// }
+}
+
+// can have methods within objects
+
+console.log(obj.showNum(1994))
+console.log(obj['showNum'](2000))
+console.log(obj.showNum(obj.birthYear))
+
+// console.log(obj.calcAge(1999))
