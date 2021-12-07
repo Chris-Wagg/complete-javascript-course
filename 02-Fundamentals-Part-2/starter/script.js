@@ -176,25 +176,82 @@
 // 	`${obj.firstName} has ${obj.friends.length} friends and the best friend is ${obj.friends[0]}`
 // )
 
-const obj = {
-	firstName: 'jeff',
-	lastName: 'Jeffjeff',
-	birthYear: 1994,
-	job: 'jeffer',
-	friends: ['alan', 'steve', 'jo'],
-	isCool: true,
-	showNum: function (num) {
-		return num
-	}
-	// showNum: function (year) {
-	// 	return year - this.age
-	// }
-}
+// const obj = {
+// 	firstName: 'jeff',
+// 	lastName: 'Jeffjeff',
+// 	birthYear: 1994,
+// 	job: 'jeffer',
+// 	friends: ['alan', 'steve', 'jo'],
+// 	isCool: true,
+// 	// showNum: function (num) {
+// 	// 	return 2037 - num
 
-// can have methods within objects
+// 	// showNum: function () {
+// 	// 	return 2037 - this.birthYear
 
-console.log(obj.showNum(1994))
-console.log(obj['showNum'](2000))
-console.log(obj.showNum(obj.birthYear))
+// 	showNum: function () {
+// 		this.age = 2037 - this.birthYear
+// 		return this.age
+// 	},
 
-// console.log(obj.calcAge(1999))
+// 	getSummary: function () {
+// 		return `${this.firstName} is a ${this.showNum()}-year old ${
+// 			this.job
+// 		} and he is ${this.isCool ? 'really' : 'definitely a not'} cool jeff`
+// 	}
+// }
+
+// // can have methods within objects
+
+// // console.log(obj.showNum(1991))
+// // console.log(obj['showNum'](1991))
+// // console.log(obj.showNum(obj.birthYear))
+
+// console.log(obj.showNum())
+// // the this. keyword from the method is pointing to the object itself so when called will look in the object for where it is pointing to
+// // eg this.birthyear is pointing back to the object so will not need  param because it already knows to look there
+// // using this. is better if you need to change const names because it's one less thing to change and reduce chance of bugs
+
+// console.log(obj.showNum())
+// console.log(obj.age)
+// // not obj.age() because it's not a function call
+
+// console.log(obj.getSummary())
+
+// BMI = mass(weight) / (height * 2)
+
+// const mark = {
+// 	firstName: 'Mark',
+// 	lastName: 'Jeff',
+// 	mass: 78,
+// 	height: 1.69,
+// 	calcBMI: function () {
+// 		this.bmi = this.mass / this.height ** 2
+// 		return this.bmi
+// 	}
+// }
+// const john = {
+// 	firstName: 'John',
+// 	lastName: 'Jeff',
+// 	mass: 92,
+// 	height: 1.95,
+// 	calcBMI: function () {
+// 		this.bmi = this.mass / this.height ** 2
+// 		return this.bmi
+// 	}
+// }
+
+// console.log(mark.calcBMI())
+// console.log(john.calcBMI())
+
+// console.log(
+// 	`${john.firstName} ${john.lastName}'s' BMI ${john.calcBMI()} is lower than ${
+// 		mark.firstName
+// 	} ${mark.lastName}'s' BMI ${mark.calcBMI()}`
+// )
+
+// 		return `${this.firstName} is a ${this.showNum()}-year old ${
+// 			this.job
+// 		} and he is ${this.isCool ? 'really' : 'definitely a not'} cool jeff`
+
+// LOOPS ---------------------------------------------------------------------
