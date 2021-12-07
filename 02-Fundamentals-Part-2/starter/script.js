@@ -255,3 +255,53 @@
 // 		} and he is ${this.isCool ? 'really' : 'definitely a not'} cool jeff`
 
 // LOOPS ---------------------------------------------------------------------
+
+// for (let rep = 1; rep <= 10; rep++) {
+// 	console.log(rep)
+// }
+
+//array looping--------------------------------------------------------------
+
+const chris = [
+	'chris',
+	'wagg',
+	2021 - 1994,
+	'teacher',
+	['jeff', 'steve', 'alan'],
+	true
+]
+// const types = []
+// // need the empty array here to fill in the loop later
+
+// for (let i = 0; i < chris.length; i++) {
+// 	console.log(chris[i], typeof chris[i])
+
+// 	// fills the types array from earlier
+// 	// types[i] = typeof chris[i]
+
+// 	types.push(typeof chris[i])
+// 	// this does the same thing
+// }
+
+// console.log(types)
+
+// const years = [1994, 1995, 1996, 1997, 1998]
+// const ages = []
+
+// for (let i = 0; i < years.length; i++) {
+// 	ages.push(2021 - years[i])
+// }
+
+// console.log(ages)
+
+//continue and break-------------------------------------------------
+
+for (let i = 0; i < chris.length; i++) {
+	if (typeof chris[i] !== 'string') continue
+	console.log(chris[i], typeof chris[i])
+}
+
+for (let i = 0; i < chris.length; i++) {
+	if (typeof chris[i] === 'number') break
+	console.log(chris[i], typeof chris[i])
+}
