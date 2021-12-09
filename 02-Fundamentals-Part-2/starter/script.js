@@ -262,14 +262,14 @@
 
 //array looping--------------------------------------------------------------
 
-const chris = [
-	'chris',
-	'wagg',
-	2021 - 1994,
-	'teacher',
-	['jeff', 'steve', 'alan'],
-	true
-]
+// const chris = [
+// 	'chris',
+// 	'wagg',
+// 	2021 - 1994,
+// 	'teacher',
+// 	['jeff', 'steve', 'alan'],
+// 	true
+// ]
 // const types = []
 // // need the empty array here to fill in the loop later
 
@@ -296,12 +296,79 @@ const chris = [
 
 //continue and break-------------------------------------------------
 
-for (let i = 0; i < chris.length; i++) {
-	if (typeof chris[i] !== 'string') continue
-	console.log(chris[i], typeof chris[i])
+// for (let i = 0; i < chris.length; i++) {
+// 	if (typeof chris[i] !== 'string') continue
+// 	console.log(chris[i], typeof chris[i])
+// }
+
+// for (let i = 0; i < chris.length; i++) {
+// 	if (typeof chris[i] === 'number') break
+// 	console.log(chris[i], typeof chris[i])
+// }
+
+// loops backwards----------------------------------------
+
+// const chris = [
+// 	'chris',
+// 	'wagg',
+// 	2021 - 1994,
+// 	'teacher',
+// 	['jeff', 'steve', 'alan'],
+// 	true
+// ]
+
+// // loop backwards
+// for (let i = chris.length - 1; 1 >= 0; i--) {
+// 	console.log(chris[i])
+// }
+
+// for (let exercise = 1; exercise < 4; exercise++) {
+// 	console.log(`jeff number ${exercise}`)
+
+// // this loop runs in between each iteration of the loop above
+// 	for (let rep = 1; rep < 6; rep++) {
+// 		console.log(`lifting jeff at rep ${rep}`)
+// 	}
+// }
+
+// while loop---------------------------------------------------------------------
+
+// let rep = 1
+// while (rep <= 10) {
+// 	console.log(`jeff`)
+// 	rep++
+// }
+
+// let dice = Math.trunc(Math.random() * 6) + 1
+
+// while (dice !== 6) {
+// 	console.log(`nice roll of ${dice}`)
+// 	dice = Math.trunc(Math.random() * 6) + 1
+// }
+
+const calcTip = function (bill) {
+	return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+
+const tips = []
+const totals = []
+
+for (let i = 0; i < bills.length; i++) {
+	const tip = calcTip(bills[i])
+	tips.push(tip)
+	totals.push(tip + bills[i])
 }
 
-for (let i = 0; i < chris.length; i++) {
-	if (typeof chris[i] === 'number') break
-	console.log(chris[i], typeof chris[i])
+console.log(bills, tips, totals)
+
+const calcAverage = function (arr) {
+	let sum = 0
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i]
+	}
+	return sum / arr.length
 }
+console.log(calcAverage([2, 3, 7]))
+console.log(calcAverage(totals))
+console.log(calcAverage(tips))
