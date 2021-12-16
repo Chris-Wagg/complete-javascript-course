@@ -95,45 +95,100 @@
 // const f = jeff.calcAge;
 // f(); // ths is a regular function call so it has no parent object so *this can't point to anything so won't work
 
-var firstName = 'steve';
+// var firstName = 'steve';
 
-const jeff = {
-  year: 2001,
-  calcAge: function () {
-    // console.log(this);
-    console.log(2037 - this.year);
+// const jeff = {
+//   year: 2001,
+//   calcAge: function () {
+//     // console.log(this);
+//     console.log(2037 - this.year);
 
-    // const self = this;
-    // const a = function () {
-    //   console.log(self.year >= 2981 && self.year <= 1996);
-    //   //this does not work in regular function, it undefined, needs to be used with an object, can pass it down with variables, eg self
+//     // const self = this;
+//     // const a = function () {
+//     //   console.log(self.year >= 2981 && self.year <= 1996);
+//     //   //this does not work in regular function, it undefined, needs to be used with an object, can pass it down with variables, eg self
 
-    const a = () => {
-      // this works because it uses parent scope info, so this.year will be 2001
-      console.log(this);
-      console.log(this.year >= 2981 && this.year <= 1996);
-    };
-    a();
-  },
+//     const a = () => {
+//       // this works because it uses parent scope info, so this.year will be 2001
+//       console.log(this);
+//       console.log(this.year >= 2981 && this.year <= 1996);
+//     };
+//     a();
+//   },
 
-  greet: () => console.log(`hey ${this.firstName}`), // parent scope of this is the global scope, which is he wondow object. *this will be undefined. need to define firstName as a global variable (var) for access it (line 98). need a function method instead of an arrow
+//   greet: () => console.log(`hey ${this.firstName}`), // parent scope of this is the global scope, which is he wondow object. *this will be undefined. need to define firstName as a global variable (var) for access it (line 98). need a function method instead of an arrow
+// };
+
+// jeff.greet();
+
+// //* this does not work in regular function, it undefined, needs to be used with an object, can pass it down with variables
+
+// const add = function (a, b) {
+//   console.log(arguments); // this will make an array of the passed arguments to the function
+//   return a + b;
+// };
+
+// add(1, 2);
+// add(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+// const addArrow = (a, b) => {
+//   console.log(arguments); // this doesn't work with arrow functions
+//   return a + b;
+// };
+
+// addArrow(1, 2);
+
+// --------------- primatives vs references -----------------------------
+
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+// // old age is still = 30 becaue ae is only changes after is has been defined
+
+// const me = {
+//   name: 'jeff',
+//   age: 30,
+// };
+
+// const friend = me;
+// friend.age = 27;
+
+// console.log('friend', friend);
+// console.log('me', me);
+
+// // friend.age = 27 causes me.age to also = 27 because this doesn't create a new object, it just points to the same object at that address in the heap with the object value, age is then re-written because friend.age and me.age are then the same object key/value pair
+
+let lastName = 'Jeff';
+let oldLastName = lastName;
+lastName = 'alan';
+console.log(lastName, oldLastName);
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
 };
 
-jeff.greet();
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis'; // same thing as above
 
-//* this does not work in regular function, it undefined, needs to be used with an object, can pass it down with variables
+console.log(jessica);
+console.log(marriedJessica);
 
-const add = function (a, b) {
-  console.log(arguments); // this will make an array of the passed arguments to the function
-  return a + b;
+// marriedJessica = {}; // can't do this because it's then pointing to a new object address
+
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Jeff', 'Alan'],
 };
 
-add(1, 2);
-add(1, 2, 3, 4, 5, 6, 7, 8, 9);
+const jessicaCopy = Object.assign({}, jessica2); // this creates a new object that can be edited but this only makes a shallwo copy
+jessicaCopy.lastName = 'Davis';
 
-const addArrow = (a, b) => {
-  console.log(arguments); // this doesn't work with arrow functions
-  return a + b;
-};
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John'); // these have the same results as above where the arrays in each object will be the same becuse shallow cloning doesn't work on nested values in the objects
 
-addArrow(1, 2);
+console.log(jessica2);
+console.log(jessicaCopy);
