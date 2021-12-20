@@ -48,20 +48,144 @@ const restaurant = {
       `${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`${ing1}, ${ing2}, ${ing3}`);
+  },
+
+  orderPizza: function (main, ...other) {
+    console.log(main);
+    console.log(other);
+  },
 };
 
-// passing an object to a function
-restaurant.orderDelivery({
-  time: '11:00',
-  address: 'jeff',
-  mainIndex: 2,
-  starterIndex: 2,
-});
+// ------------- logical operators ------------------------
+// can use and return any data type, will short circut (will return the first truthy value it comes across)
+console.log('--------- OR ----------------');
+console.log(3 || 'string'); //3
+console.log('' || 'string'); //string
+console.log(true || 0); //true
+console.log(undefined || null); //null
+console.log(undefined || 0 || '' || 'string' || 27 || null); // string (first truthy value)
 
-restaurant.orderDelivery({
-  address: 'alan',
-  starterIndex: 2,
-});
+restaurant.numGuest = 23; // doesn't work with 0 because it's falsey so will end up returning 10
+const guest = restaurant.numGuest ? restaurant.numGuest : 10;
+console.log(guest);
+
+const guest1 = restaurant.numGuest || 10; // removes the need for the turnery operator
+console.log(guest1);
+
+console.log('--------------- AND ------------------');
+// && operator works opposite,short circuts and will return on first falsey value
+console.log(3 && 'string'); //string
+console.log('' && 'string'); //''
+console.log(true && 0); //0
+console.log(undefined && null); //undefined
+console.log(0 && '' && 'string' && 27 && null); // 0 (first falsey value)
+
+// example (checking if a property exists on an object)
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('ham', 'sauce');
+} // if the method exists, then execute it. If it doesn't exist then it will short circut and not evaulate what's next
+
+restaurant.orderPizza && restaurant.orderPizza('ham', 'pineapple');
+// //----------------------------------- Rest operator/ condences ---------------------------------
+
+// // spread because it's on the rigth side of the =
+// const arr = [1, 2, ...[3, 4]];
+
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+// // will look like: 1 2 [3,4,5]
+// // takes what is not assigned from the destrcuturing and puts them in a new array on their own
+
+// const [jeff, , alan, ...other] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(jeff, alan, other);
+
+// // rest nees to be the last thing in the assignment. can only do it once per array/object
+
+// //---obect-----
+
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+
+// //----functions------
+
+// //rest params
+// const add = function (...numbers) {
+//   console.log(numbers);
+// };
+
+// add(2, 3);
+// add(1, 2, 3, 4, 5);
+
+// const x = [1, 2, 3];
+// add(...x); // spread the array assigned to x to then pass to the rest params of the function
+
+// restaurant.orderPizza('mushroom', 'two', 'three', 'four', 'five');
+
+// ---------------------------- spread operator/ unpack -------------------------------
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const badArr = [1, 2, arr[0], arr[1], arr[2]];
+// // console.log(badArr);
+
+// const goodArr = [1, 2, ...arr];
+// // console.log(goodArr);
+
+// // console.log(...goodArr);
+
+// const newMenu = [...restaurant.mainMenu, 'jeff'];
+// // console.log(newMenu);
+
+// // array copy
+
+// const menuCopy = [...restaurant.mainMenu];
+// // console.log(menuCopy);
+
+// // join arrays
+
+// const joinArray = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// // console.log(joinArray);
+
+// // spead works on all iterables: arrays, strings, maps, sets, even objects even thought they aren't iterables
+
+// const test = 'test';
+// const letters = [...test, ' ', 's'];
+// // console.log(letters);
+// // breaks up the string into individual items
+
+// // const ingre = [prompt(`1`), prompt(`2`), prompt(`3`)];
+
+// // console.log(ingre);
+
+// // restaurant.orderPasta(...ingre);
+
+// // ------------- spreading objects
+
+// const newObj = { ...restaurant, founder: 'alan', foundedIn: '6969' }; // spreads new object and adds to it
+// console.log(newObj);
+
+// const restCopy = { ...restaurant };
+// restCopy.name = 'fffffffff';
+// console.log(restCopy);
+
+// ------------------- object ------------------------
+
+// // passing an object to a function
+// restaurant.orderDelivery({
+//   time: '11:00',
+//   address: 'jeff',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+
+// restaurant.orderDelivery({
+//   address: 'alan',
+//   starterIndex: 2,
+// });
 
 // ----------------- object destructuring -------------------------------
 
