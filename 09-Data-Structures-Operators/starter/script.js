@@ -59,36 +59,84 @@ const restaurant = {
   },
 };
 
-// ------------- logical operators ------------------------
-// can use and return any data type, will short circut (will return the first truthy value it comes across)
-console.log('--------- OR ----------------');
-console.log(3 || 'string'); //3
-console.log('' || 'string'); //string
-console.log(true || 0); //true
-console.log(undefined || null); //null
-console.log(undefined || 0 || '' || 'string' || 27 || null); // string (first truthy value)
+const rest1 = {
+  name: 'name1',
+  // numGuests: 20,
+  numGuests: 0, // falsey so dowsnt work with ||
+};
+const rest2 = {
+  name: 'name2',
+  owner: 'Jeff',
+};
 
-restaurant.numGuest = 23; // doesn't work with 0 because it's falsey so will end up returning 10
-const guest = restaurant.numGuest ? restaurant.numGuest : 10;
-console.log(guest);
+// --------- OR assignment operator ||=  ---------------
 
-const guest1 = restaurant.numGuest || 10; // removes the need for the turnery operator
-console.log(guest1);
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10; // this will return undefined so will default to 10
 
-console.log('--------------- AND ------------------');
-// && operator works opposite,short circuts and will return on first falsey value
-console.log(3 && 'string'); //string
-console.log('' && 'string'); //''
-console.log(true && 0); //0
-console.log(undefined && null); //undefined
-console.log(0 && '' && 'string' && 27 && null); // 0 (first falsey value)
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
 
-// example (checking if a property exists on an object)
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('ham', 'sauce');
-} // if the method exists, then execute it. If it doesn't exist then it will short circut and not evaulate what's next
+// console.log(rest1);
+// console.log(rest2);
 
-restaurant.orderPizza && restaurant.orderPizza('ham', 'pineapple');
+// ---------------- null assignment operator ??= -------------
+
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+
+// console.log(rest1);
+// console.log(rest2);
+
+// ---------- and assignment operator &&=  -----------------
+
+// rest1.owner = rest1.owner && '<jeff>'; // short circuts because first value os falsey
+// rest2.owner = rest2.owner && '<jeff>';
+
+rest1.owner &&= '<jeff>'; // this was falsey so nothing happened
+rest2.owner &&= '<jeff>'; // this was truethy so the owner string was replaced
+
+console.log(rest1);
+console.log(rest2);
+
+// -------------- Null opirator ?? -------------------------------
+
+// restaurant.numGuest = 0;
+// const guest = restaurant.numGuest || 10; // doesn't work with 0 because it's falsey so will end up returning 10
+// const guest1 = restaurant.numGuest ?? 10; // this will work with 0 because nullish values = null / undefined. makes things like 0 or '' truethy insead for that evaluation
+// console.log(guest);
+// console.log(guest1);
+
+// // ------------- logical operators ------------------------
+// // can use and return any data type, will short circut (will return the first truthy value it comes across)
+// console.log('--------- OR || ----------------');
+// console.log(3 || 'string'); //3
+// console.log('' || 'string'); //string
+// console.log(true || 0); //true
+// console.log(undefined || null); //null
+// console.log(undefined || 0 || '' || 'string' || 27 || null); // string (first truthy value)
+
+// restaurant.numGuest = 23; // doesn't work with 0 because it's falsey so will end up returning 10
+// const guest = restaurant.numGuest ? restaurant.numGuest : 10;
+// console.log(guest);
+
+// const guest1 = restaurant.numGuest || 10; // removes the need for the turnery operator
+// console.log(guest1);
+
+// console.log('--------------- AND &&------------------');
+// // && operator works opposite,short circuts and will return on first falsey value
+// console.log(3 && 'string'); //string
+// console.log('' && 'string'); //''
+// console.log(true && 0); //0
+// console.log(undefined && null); //undefined
+// console.log(0 && '' && 'string' && 27 && null); // 0 (first falsey value)
+
+// // example (checking if a property exists on an object)
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('ham', 'sauce');
+// } // if the method exists, then execute it. If it doesn't exist then it will short circut and not evaulate what's next
+
+// restaurant.orderPizza && restaurant.orderPizza('ham', 'pineapple');
 // //----------------------------------- Rest operator/ condences ---------------------------------
 
 // // spread because it's on the rigth side of the =
