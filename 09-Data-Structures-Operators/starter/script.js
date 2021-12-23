@@ -1,85 +1,207 @@
-'use strict';
+'use strict'
 
 // Data needed for a later exercise
 const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+	'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30'
 
 // // Data needed for first part of the section
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
 const openingHours = {
-  [weekdays[3]]: {
-    // can pull a value from an array and set it as the key
-    open: 12,
-    close: 22,
-  },
-  fri: {
-    open: 11,
-    close: 23,
-  },
-  sat: {
-    // [`day-${2 + 4}`]: {
-    // can compute values and set as keys
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
+	[weekdays[3]]: {
+		// can pull a value from an array and set it as the key
+		open: 12,
+		close: 22
+	},
+	fri: {
+		open: 11,
+		close: 23
+	},
+	sat: {
+		// [`day-${2 + 4}`]: {
+		// can compute values and set as keys
+		open: 0, // Open 24 hours
+		close: 24
+	}
+}
 
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+	name: 'Classico Italiano',
+	location: 'Via Angelo Tavanti 23, Firenze, Italy',
+	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours,
-  // es6 assignment to match this with the other object with the same name
+	openingHours,
+	// es6 assignment to match this with the other object with the same name
 
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-  order(starterIndex, mainIndex) {
-    // a different way to write the function
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+	order: function (starterIndex, mainIndex) {
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+	},
+	order(starterIndex, mainIndex) {
+		// a different way to write the function
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+	},
 
-  // orderDelivery: function (object) {
-  //   console.log(object);
-  // },
+	// orderDelivery: function (object) {
+	//   console.log(object);
+	// },
 
-  // orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-  // can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = ' 12:00',
-    address,
-  }) {
-    // can use the same default values as with arrays, will fill in if function is called
-    console.log(
-      `${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
-    );
-  },
+	// orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+	// can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
+	orderDelivery: function ({
+		starterIndex = 1,
+		mainIndex = 0,
+		time = ' 12:00',
+		address
+	}) {
+		// can use the same default values as with arrays, will fill in if function is called
+		console.log(
+			`${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
+		)
+	},
 
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(`${ing1}, ${ing2}, ${ing3}`);
-  },
+	orderPasta: function (ing1, ing2, ing3) {
+		console.log(`${ing1}, ${ing2}, ${ing3}`)
+	},
 
-  orderPizza: function (main, ...other) {
-    console.log(main);
-    console.log(other);
-  },
-};
-
-// --------------------- loop
-
-const prop = Object.keys(openingHours);
-console.log(prop);
-
-for (const day of prop) {
-  console.log(day);
+	orderPizza: function (main, ...other) {
+		console.log(main)
+		console.log(other)
+	}
 }
+
+// ---------------- map iteration ---------------------------
+
+const question = new Map([
+	['question', 'this is a question'],
+	[1, 'c'],
+	[2, 'js'],
+	[3, 'pi'],
+	['correct', 3],
+	[true, 'correct'],
+	[false, 'try again']
+])
+
+console.log(question)
+
+console.log(Object.entries(openingHours)) // returns an array or arrays, the same as above, 1st ele is key, 2nd is value
+
+// convert object to map
+const hoursMap = new Map(Object.entries(openingHours))
+console.log(hoursMap)
+
+//----iteration-----
+
+for (const [key, value] of question) {
+	if (typeof key === 'number') console.log(`${key}, ${value}`)
+}
+// ----------------- MAPPING -----------------------------------
+
+// const rest = new Map() // best to have an empty map to start
+// rest.set('name', 'title')
+// rest.set(1, 'place')
+// console.log(rest.set(2, ' other place')) // set will also return at the same time
+
+// rest.set(3, 'lul').set(4, 'a').set(5, 'b')
+// // sets can be chained together
+
+// rest.set(true, 'open').set(false, 'closed').set('open', 11).set('close', 23)
+
+// console.log(rest.get('name'))
+// console.log(rest.get(true)) // data type matters here, needs to match original or will return undefined
+// console.log(rest.get(1))
+
+// const time = 15
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
+// // the > and < are being used to compare the boolean values from above, and then open/ close are also being compared to get the time
+
+// console.log(rest.has(3))
+
+// rest.delete(4)
+// console.log(rest)
+
+// console.log(rest.size)
+
+// rest.clear()
+
+// rest.set([1, 2], 'test')
+// console.log(rest)
+
+// rest.set(document.querySelector('h1', 'Heading'))
+// can also grab dom elements with this
+// --------------------- SETS ----------------------------------
+// can hold multiple data types
+// are itterables
+// order is irrilevant
+// no way to get values out of a set
+// main use is to remove duplicates
+//best to use arrays to start
+
+// const orderSet = new Set(['jeff', 'steve', 'alan', 'jeff', 'steve', 'alan']);
+// console.log(orderSet);
+// // will not show duplicates
+
+// console.log(new Set('Chris'));
+
+// console.log(orderSet.size); // size not length like arrays
+// console.log(orderSet.has('jeff'));
+// console.log(orderSet.has('JEEEEEFFFF'));
+
+// orderSet.add('Garlic Bread'); // if you added 2 of the same things it would still only show 1 because it doesnt show duplicates
+// console.log(orderSet);
+
+// orderSet.delete('jeff');
+// console.log(orderSet);
+
+// // orderSet.clear();
+// // console.log(orderSet);
+
+// //can still loop with them
+// for (const order of orderSet) console.log(order);
+
+// const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'waiter'];
+// const staffNum = new Set(staff);
+// console.log(staffNum);
+
+// const staffNum1 = [...new Set(staff)]; // can spread it to put the results into an array
+// console.log(staffNum1);
+
+// console.log(new Set(['1', '2', '3', '4', '5']).size); // use .size to check length
+// console.log(new Set('ChristopherGeorgeWagg').size); // use .size to check how many unique items there are
+
+// --------------------- loop over objects ---------------------
+
+// // loop keys
+// const prop = Object.keys(openingHours);
+
+// let text = `open ${prop.length} days: `;
+
+// for (const day of prop) {
+//   text += `${day}, `;
+// }
+
+// // console.log(text);
+
+// // loop values
+
+// const value = Object.values(openingHours);
+// // console.log(value);
+
+// // entire object
+
+// const entry = Object.entries(openingHours);
+// // console.log(entry);
+
+// for (const x of entry) {
+//   console.log(x);
+// }
+
+// for (const [day, { open, close }] of entry) {
+//   // can destructure right here
+//   console.log(`open on ${day} at ${open} and close at ${close}`);
+// }
 
 // --------------- optional chaining -----------------------
 
