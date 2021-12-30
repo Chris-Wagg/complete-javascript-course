@@ -1,102 +1,275 @@
 'use strict'
 
 // Data needed for a later exercise
-const flights =
-	'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30'
+// const flights =
+// 	'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30'
 
 // // Data needed for first part of the section
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+// const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
-const openingHours = {
-	[weekdays[3]]: {
-		// can pull a value from an array and set it as the key
-		open: 12,
-		close: 22
-	},
-	fri: {
-		open: 11,
-		close: 23
-	},
-	sat: {
-		// [`day-${2 + 4}`]: {
-		// can compute values and set as keys
-		open: 0, // Open 24 hours
-		close: 24
-	}
-}
+// const openingHours = {
+// 	[weekdays[3]]: {
+// 		// can pull a value from an array and set it as the key
+// 		open: 12,
+// 		close: 22
+// 	},
+// 	fri: {
+// 		open: 11,
+// 		close: 23
+// 	},
+// 	sat: {
+// 		// [`day-${2 + 4}`]: {
+// 		// can compute values and set as keys
+// 		open: 0, // Open 24 hours
+// 		close: 24
+// 	}
+// }
 
-const restaurant = {
-	name: 'Classico Italiano',
-	location: 'Via Angelo Tavanti 23, Firenze, Italy',
-	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+// const restaurant = {
+// 	name: 'Classico Italiano',
+// 	location: 'Via Angelo Tavanti 23, Firenze, Italy',
+// 	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+// 	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+// 	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-	openingHours,
-	// es6 assignment to match this with the other object with the same name
+// 	openingHours,
+// 	// es6 assignment to match this with the other object with the same name
 
-	order: function (starterIndex, mainIndex) {
-		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-	},
-	order(starterIndex, mainIndex) {
-		// a different way to write the function
-		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-	},
+// 	order: function (starterIndex, mainIndex) {
+// 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+// 	},
+// 	order(starterIndex, mainIndex) {
+// 		// a different way to write the function
+// 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+// 	},
 
-	// orderDelivery: function (object) {
-	//   console.log(object);
-	// },
+// 	// orderDelivery: function (object) {
+// 	//   console.log(object);
+// 	// },
 
-	// orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-	// can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
-	orderDelivery: function ({
-		starterIndex = 1,
-		mainIndex = 0,
-		time = ' 12:00',
-		address
-	}) {
-		// can use the same default values as with arrays, will fill in if function is called
-		console.log(
-			`${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
-		)
-	},
+// 	// orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+// 	// can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
+// 	orderDelivery: function ({
+// 		starterIndex = 1,
+// 		mainIndex = 0,
+// 		time = ' 12:00',
+// 		address
+// 	}) {
+// 		// can use the same default values as with arrays, will fill in if function is called
+// 		console.log(
+// 			`${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
+// 		)
+// 	},
 
-	orderPasta: function (ing1, ing2, ing3) {
-		console.log(`${ing1}, ${ing2}, ${ing3}`)
-	},
+// 	orderPasta: function (ing1, ing2, ing3) {
+// 		console.log(`${ing1}, ${ing2}, ${ing3}`)
+// 	},
 
-	orderPizza: function (main, ...other) {
-		console.log(main)
-		console.log(other)
-	}
-}
+// 	orderPizza: function (main, ...other) {
+// 		console.log(main)
+// 		console.log(other)
+// 	}
+// }
 
-// ---------------- map iteration ---------------------------
+// ---------- strings --------------------
 
-const question = new Map([
-	['question', 'this is a question'],
-	[1, 'c'],
-	[2, 'js'],
-	[3, 'pi'],
-	['correct', 3],
-	[true, 'correct'],
-	[false, 'try again']
-])
+// const airline = 'airliner new zealand'
+// const plane = 'A320'
 
-console.log(question)
+// console.log(plane[0])
+// console.log(plane[1])
+// console.log(plane[2])
+// console.log(plane[3])
 
-console.log(Object.entries(openingHours)) // returns an array or arrays, the same as above, 1st ele is key, 2nd is value
+// console.log('A1B2'[2])
 
-// convert object to map
-const hoursMap = new Map(Object.entries(openingHours))
-console.log(hoursMap)
+// console.log(airline.length)
+// console.log('A1B2'.length)
 
-//----iteration-----
+// console.log(airline.indexOf('r'))
+// console.log(airline.lastIndexOf('r'))
+// console.log(airline.indexOf('new'))
 
-for (const [key, value] of question) {
-	if (typeof key === 'number') console.log(`${key}, ${value}`)
-}
+// console.log(airline.slice(9)) // makes a sub string. Will not change the original string, will need to assign this to a new var to use it 
+// console.log(airline.slice(9, 12)) // length of extracted string will be end - start so 12 - 9 = 3
+
+
+
+// console.log(airline.slice(0, airline.indexOf(' '))) // will get the first word without knowing the index, will end at the first space
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)) // will grab the last word because it's only looking for the last space and then will take everything after. Because this will include the space thought need to use +1 to remove it
+
+// console.log(airline.slice(-2)) // starts from the end
+// console.log(airline.slice(1, -1)) // will cut off the first and last character 
+
+
+// const checkSeat = function(seat) {
+// 	const s = seat.slice(-1)
+// 	if (s === 'b' || s === 'e') {
+// 		console.log('middle seat')
+// 	} else {
+// 		console.log('not middle')
+// 	}
+// }
+
+// checkSeat('11b')
+// checkSeat('23c')
+// checkSeat('3e')
+
+
+
+// ------ casing --------
+
+// console.log(airline.toLowerCase())
+// console.log(airline.toUpperCase())
+
+
+// // ------ fix capitalisation ------
+
+
+// // long way
+// const pass = 'cHrIs'
+// const passLow = pass.toLowerCase()
+// const passCor = passLow[0].toUpperCase() + passLow.slice(1)
+// console.log(passCor)
+
+
+// // ------ trim ------
+
+// const string = '   string    \n'
+// const fixStr = string.trim() // removes whitespace and other empty stuff off a string
+// console.log(fixStr)
+
+// // can also use .trimStart or .trimEnd
+
+
+// // ----- replacing ----- // this is case sensative
+
+// const priceGB = '123,45&'
+// const priceUS = priceGB.replace('&', '$').replace(',', '.') // replaces the first argument with the second argument, can chain these because replace returns a new string 
+// console.log(priceUS)
+
+
+// const testStr = 'this this is is a a test test'
+// const test2 = testStr.replaceAll('test', 'jeff') // can just use this to replace all instances of a thing as well
+// console.log(test2)
+
+
+// // ------ boolens -------
+
+// const plane = 'Airbus A320neo'
+// console.log(plane.includes('A320')) // will be true as long as this is somewhere in the string
+// console.log(plane.includes('jeff'))
+
+// console.log(plane.startsWith('Airb'))
+// console.log(plane.endsWith('neo'))
+
+// if(plane.startsWith('Airb') || plane.endsWith('neo')) {
+// 	console.log('yes')
+// }
+
+// when checking strings with .includes it's good to make sure you set it to lower case so it's easier for the inclueds to find it. 
+
+
+// ----------------- string splits/ joins ----------------------------
+
+// console.log(('a+very+nice+string').split('+'))
+// console.log(('this is a string').split(' '))
+
+// const [first, second] = 'jeff jefferson'.split(' ')
+
+// const newName = ['Mr', first, second.toUpperCase()].join(' -')
+// console.log(newName)
+
+
+
+// // ---- test stuff ------
+// const capName = function(name) {
+// const names = name.split(' ') // makes an array
+// const upName = []
+
+// for (const n of names) { // loops above array
+// 	// these do the same thing but 2 different ways 
+// 	// upName.push(n[0].toUpperCase() + n.slice(1))
+// 	upName.push(n.replace(n[0], n[0].toUpperCase()))
+// }
+// console.log(upName.join(' '))
+// }
+
+// capName('jeff jeff jeff jeff')
+
+
+// // ------- padding ------------
+// // adds to the start or end of strings to make the string the indicated length
+
+// const message = 'this is a string'
+// console.log(message.padStart(25, ' ').padEnd(35, '+')) // first arg is how many characters the string needs to be, the second is what will be used to make the padding
+
+
+// const mask = function(number)	{
+// 	const str = number + '' // use this empty string to convert number to a string as well
+// 	const last = str.slice(-4)
+// 	return last.padStart(str.length, '*')
+// }
+
+// console.log(mask(123456789))
+// console.log(mask('1234567890987654321'))
+
+// // ------ repeat -------
+
+// const mess = 'bad weather jeff '
+// console.log(mess.repeat(5))
+
+
+// const line = function(n) {
+// 	console.log(`${n} planes in line ${'✈'.repeat(n)}`)
+// }
+
+// line(3)
+// line(5)
+// line(7)
+// // ---------------- map iteration ---------------------------
+
+// const question = new Map([
+// 	['question', 'this is a question'],
+// 	[1, 'c'],
+// 	[2, 'js'],
+// 	[3, 'pi'],
+// 	['correct', 3],
+// 	[true, 'correct'],
+// 	[false, 'try again']
+// ])
+
+// console.log(question)
+
+// console.log(Object.entries(openingHours)) // returns an array or arrays, the same as above, 1st ele is key, 2nd is value
+
+// // convert object to map
+// const hoursMap = new Map(Object.entries(openingHours))
+// console.log(hoursMap)
+
+// //----iteration-----
+
+// console.log(question.get('question'))
+
+// for (const [key, value] of question) {
+// 	if (typeof key === 'number') console.log(`Answer:${key}, ${value}`)
+// }
+
+// // const answer = Number(prompt('answer is?'))
+// // console.log(answer)
+
+// // console.log(question.get(question.get('correct') === answer))
+
+// // ---------- convert map to array ----------------
+
+
+// console.log([...question]) // this will give all the entries so .entries isn't needed
+// console.log([...question.keys()]) // need to spread them for this to work
+// console.log([...question.values()])
+
+
+
 // ----------------- MAPPING -----------------------------------
 
 // const rest = new Map() // best to have an empty map to start
