@@ -6,71 +6,71 @@
 
 // // Data needed for first part of the section
 
-// const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
-// const openingHours = {
-// 	[weekdays[3]]: {
-// 		// can pull a value from an array and set it as the key
-// 		open: 12,
-// 		close: 22
-// 	},
-// 	fri: {
-// 		open: 11,
-// 		close: 23
-// 	},
-// 	sat: {
-// 		// [`day-${2 + 4}`]: {
-// 		// can compute values and set as keys
-// 		open: 0, // Open 24 hours
-// 		close: 24
-// 	}
-// }
+const openingHours = {
+	[weekdays[3]]: {
+		// can pull a value from an array and set it as the key
+		open: 12,
+		close: 22
+	},
+	fri: {
+		open: 11,
+		close: 23
+	},
+	sat: {
+		// [`day-${2 + 4}`]: {
+		// can compute values and set as keys
+		open: 0, // Open 24 hours
+		close: 24
+	}
+}
 
-// const restaurant = {
-// 	name: 'Classico Italiano',
-// 	location: 'Via Angelo Tavanti 23, Firenze, Italy',
-// 	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-// 	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-// 	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+const restaurant = {
+	name: 'Classico Italiano',
+	location: 'Via Angelo Tavanti 23, Firenze, Italy',
+	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-// 	openingHours,
-// 	// es6 assignment to match this with the other object with the same name
+	openingHours,
+	// es6 assignment to match this with the other object with the same name
 
-// 	order: function (starterIndex, mainIndex) {
-// 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-// 	},
-// 	order(starterIndex, mainIndex) {
-// 		// a different way to write the function
-// 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-// 	},
+	order: function (starterIndex, mainIndex) {
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+	},
+	order(starterIndex, mainIndex) {
+		// a different way to write the function
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+	},
 
-// 	// orderDelivery: function (object) {
-// 	//   console.log(object);
-// 	// },
+	// orderDelivery: function (object) {
+	//   console.log(object);
+	// },
 
-// 	// orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-// 	// can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
-// 	orderDelivery: function ({
-// 		starterIndex = 1,
-// 		mainIndex = 0,
-// 		time = ' 12:00',
-// 		address
-// 	}) {
-// 		// can use the same default values as with arrays, will fill in if function is called
-// 		console.log(
-// 			`${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
-// 		)
-// 	},
+	// orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+	// can destructure right here instead if we know what's being passed, needs to the the same names. The order doesn't need to be the same though
+	orderDelivery: function ({
+		starterIndex = 1,
+		mainIndex = 0,
+		time = ' 12:00',
+		address
+	}) {
+		// can use the same default values as with arrays, will fill in if function is called
+		console.log(
+			`${this.starterMenu[starterIndex]} + ${this.mainMenu[mainIndex]} to ${address} at ${time}`
+		)
+	},
 
-// 	orderPasta: function (ing1, ing2, ing3) {
-// 		console.log(`${ing1}, ${ing2}, ${ing3}`)
-// 	},
+	orderPasta: function (ing1, ing2, ing3) {
+		console.log(`${ing1}, ${ing2}, ${ing3}`)
+	},
 
-// 	orderPizza: function (main, ...other) {
-// 		console.log(main)
-// 		console.log(other)
-// 	}
-// }
+	orderPizza: function (main, ...other) {
+		console.log(main)
+		console.log(other)
+	}
+}
 
 // ---------- strings --------------------
 
@@ -410,24 +410,24 @@
 
 // -------------- for/of loop --------------------------------
 
-// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-// for (const item of menu) console.log(item);
-// for (const item of restaurant.starterMenu) console.log(item);
+for (const item of menu) console.log(item);
+for (const item of restaurant.starterMenu) console.log(item);
 
-// // loops over and accesses each item. Will then log every item in said array one by one. item variable will the current item od each iteration of the loop.
+// loops over and accesses each item. Will then log every item in said array one by one. item variable will the current item od each iteration of the loop.
 
-// for (const item of menu.entries()) {
-//   // gives the array with the index and the item eg: [4, "Pizza"]
-//   console.log(item);
-// }
+for (const item of menu.entries()) {
+  // gives the array with the index and the item eg: [4, "Pizza"]
+  console.log(item);
+}
 
-// console.log([...menu.entries()]); // will return an array of arrays)
+console.log([...menu.entries()]); // will return an array of arrays)
 
-// for (const [i, e] of menu.entries()) {
-//   // can destructure here to grab each part of the array
-//   console.log(i + 1, e);
-// }
+for (const [i, e] of menu.entries()) {
+  // can destructure here to grab each part of the array
+  console.log(i + 1, e);
+}
 
 // ---------------------------------------------------------
 // const rest1 = {
@@ -547,49 +547,49 @@
 // restaurant.orderPizza('mushroom', 'two', 'three', 'four', 'five');
 
 // ---------------------------- spread operator/ unpack -------------------------------
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// const badArr = [1, 2, arr[0], arr[1], arr[2]];
-// // console.log(badArr);
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const badArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badArr);
 
-// const goodArr = [1, 2, ...arr];
-// // console.log(goodArr);
+const goodArr = [1, 2, ...arr];
+// console.log(goodArr);
 
-// // console.log(...goodArr);
+// console.log(...goodArr);
 
-// const newMenu = [...restaurant.mainMenu, 'jeff'];
-// // console.log(newMenu);
+const newMenu = [...restaurant.mainMenu, 'jeff'];
+// console.log(newMenu);
 
-// // array copy
+// array copy
 
-// const menuCopy = [...restaurant.mainMenu];
-// // console.log(menuCopy);
+const menuCopy = [...restaurant.mainMenu];
+// console.log(menuCopy);
 
-// // join arrays
+// join arrays
 
-// const joinArray = [...restaurant.mainMenu, ...restaurant.starterMenu];
-// // console.log(joinArray);
+const joinArray = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(joinArray);
 
-// // spead works on all iterables: arrays, strings, maps, sets, even objects even thought they aren't iterables
+// spead works on all iterables: arrays, strings, maps, sets, even objects even thought they aren't iterables
 
-// const test = 'test';
-// const letters = [...test, ' ', 's'];
-// // console.log(letters);
-// // breaks up the string into individual items
+const test = 'test';
+const letters = [...test, ' ', 's'];
+// console.log(letters);
+// breaks up the string into individual items
 
-// // const ingre = [prompt(`1`), prompt(`2`), prompt(`3`)];
+// const ingre = [prompt(`1`), prompt(`2`), prompt(`3`)];
 
-// // console.log(ingre);
+// console.log(ingre);
 
-// // restaurant.orderPasta(...ingre);
+// restaurant.orderPasta(...ingre);
 
-// // ------------- spreading objects
+// ------------- spreading objects
 
-// const newObj = { ...restaurant, founder: 'alan', foundedIn: '6969' }; // spreads new object and adds to it
-// console.log(newObj);
+const newObj = { ...restaurant, founder: 'alan', foundedIn: '6969' }; // spreads new object and adds to it
+console.log(newObj);
 
-// const restCopy = { ...restaurant };
-// restCopy.name = 'fffffffff';
-// console.log(restCopy);
+const restCopy = { ...restaurant };
+restCopy.name = 'fffffffff';
+console.log(restCopy);
 
 // ------------------- object ------------------------
 
