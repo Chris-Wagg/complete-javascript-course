@@ -86,7 +86,7 @@ const transformer = function (str, fn) {
 transformer('jeff Jeff jeff', upWord)
 transformer('jeff Jeff jeff', oneWord)
 
-// addEventLitener is also a higer order fcuntion and similar things because they can take other function as arguments 
+// addEventLitener is also a higer order fcuntion and similar things because they can take other function as arguments
 
 // .forEach can also be higher order to do callbacks
 
@@ -97,3 +97,4 @@ transformer('jeff Jeff jeff', oneWord)
 // adddddddddddd
 // fffffffffffffff
 // ggggggggggggggggg
+// hhhhhhhhhhhhhhhhhhhh 12:20
