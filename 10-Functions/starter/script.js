@@ -91,3 +91,5 @@ transformer('jeff Jeff jeff', oneWord)
 // .forEach can also be higher order to do callbacks
 
 // higher order functions allow more abstraction which is good. could write code directly into functions, or can break code off into small code blocks and use callbacks to abstract (functional programming, single responsibility)
+
+// to add to push
