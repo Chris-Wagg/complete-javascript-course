@@ -66,25 +66,25 @@
 
 
 
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase()
-}
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase()
+// }
 
-const upWord = function (str) {
-  const [first, ...others] = str.split(' ')
-  return [first.toUpperCase(), ...others].join(' ')
-}
+// const upWord = function (str) {
+//   const [first, ...others] = str.split(' ')
+//   return [first.toUpperCase(), ...others].join(' ')
+// }
 
-// higher order function because it takes another function as an argument 
-const transformer = function (str, fn) {
-  console.log(`original string: ${str}`)
-  console.log(`transform string: ${fn(str)}`)
+// // higher order function because it takes another function as an argument 
+// const transformer = function (str, fn) {
+//   console.log(`original string: ${str}`)
+//   console.log(`transform string: ${fn(str)}`)
 
-  console.log(`transformed by: ${fn.name}`) //function method to get the name property
-}
+//   console.log(`transformed by: ${fn.name}`) //function method to get the name property
+// }
 
-transformer('jeff Jeff jeff', upWord)
-transformer('jeff Jeff jeff', oneWord)
+// transformer('jeff Jeff jeff', upWord)
+// transformer('jeff Jeff jeff', oneWord)
 
 // addEventLitener is also a higer order fcuntion and similar things because they can take other function as arguments
 
@@ -92,11 +92,95 @@ transformer('jeff Jeff jeff', oneWord)
 
 // higher order functions allow more abstraction which is good. could write code directly into functions, or can break code off into small code blocks and use callbacks to abstract (functional programming, single responsibility)
 
-// to add to push
+// note: addEventListener takes 2 argument, the trigger, and then the called function
 
-// adddddddddddd
-// fffffffffffffff
-// ggggggggggggggggg
-// hhhhhhhhhhhhhhhhhhhh 12:20
-// 12:25
 
+
+// ------------ functions returnign functions ---------------------------
+
+
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`)
+//   }
+// }
+
+// const greetCall = greet('hello')
+// // hello passed to greeting
+
+// greetCall('Jeff') // these names are passed to the unnamed function (name) within the greet function because greet is already ready beg passed 'hello'
+// greetCall('Steve')
+
+// greet('hi')('Alan') // hi is passed to greeting and alan is passed to name
+
+
+// // arrow function
+// const greetArr = greeting => name => console.log(`${greeting} ${name}`)
+// greetArr('jeff')('jeff')
+
+
+// -------- call and apply methods ------------------
+
+
+const air = {
+  airline: 'AirNZ',
+  iataCode: 'ANZ',
+  bookings: [],
+
+  //this is a mathod with enhance literal syntax 
+  book(flightNum, name) {
+    console.log(`${name} ${this.airline} ${this.iataCode} ${flightNum}`)
+
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name })
+  }
+}
+
+air.book(239, 'Jeff')
+console.log(air)
+
+
+const newAir = {
+  airline: 'new Airline',
+  iataCode: 'NA',
+  bookings: []
+}
+
+const book = air.book
+
+// book(23, 'alan')
+// this will error because boo kis now jsut a normal function, not the moethod from thr air object. (this.) will notwork because it will point to undefined because it doesn't have a parent object to look at  
+
+
+
+
+
+// --------------------call method---------------------
+// following fixes the this keyword error
+
+book.call(newAir, 23, 'jeff jefferson')
+// use the call method on book to allow the this keyword to work. the first arg of call method is where you want the this keyword to point. Following args are just the normal functiong args. call can be used to manually manipulate the this keyword. 
+
+book.call(air, 45, 'Jeffe')
+
+console.log(newAir)
+console.log(air)
+
+// -----------------apply method----------------
+
+// apply takes an array for the arguments, takes the elements and passes that to the function.
+
+const flightData = [123, 'alan']
+
+book.apply(air, flightData)
+console.log(air)
+// this method is not relly used all that much anymore
+
+// ----- call spread --------
+// much easier way to deal with arrays
+book.call(air, ...flightData)
+console.log(air)
+
+
+
+
+// -------------- bind method --------------------
