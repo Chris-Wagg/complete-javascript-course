@@ -238,18 +238,46 @@
 
 
 
-
-
-
-
 /////////////// CODING CHALENGE 1 //////////////////
 
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0)
-}
+//   // prompt for the question to be asked and to take the input
+//   registerNewAnswer() {
+//     const answer = Number(
+//       prompt(
+//         `${this.question} \n ${this.options.join('\n')}
+//         \n(Write option number)`
+//       )
+//     )
+//     console.log(answer)
+//     // checks for a valid answer
+//     typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++ // short circuting here. Will increase the value of the array index based on what number it's given. If it's passed a number not in the index nothing will happen
+
+//     this.displayResults()
+//     this.displayResults('string')
+//   },
+//   displayResults(type = 'array') { // sets default params to 'array'
+//     if (type === 'array') {
+//       console.log(this.answers)
+//     } else if (type === 'string') {
+//       console.log(`poll results ${this.answers.join(', ')}`)
+//     }
+//   }
+// }
+
+// // poll.registerNewAnswer()
+
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll))
+// // need to use bind to avoud this pointing at the button element and pointing at the obj instead
+
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string')
+// // //use call here to make sure this points to the object with the array given
 
 
