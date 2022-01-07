@@ -80,3 +80,32 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // ------------- array methods -----------------------
 
+let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+// slice -----
+
+const a = arr.slice(2) // returns new array, first arg is the starting place of the slice (will include that index)
+const b = arr.slice(2, 4) // second arg is the end of the slice. It will only slice as many as the second arg - first arg, so 4-2 = 2 etc
+
+console.log(arr)
+console.log(a)
+console.log(b)
+
+console.log(arr.slice(-1)) // this works from the end instead
+console.log(arr.slice(1, -1)) // this works sfrom both sides at the same time
+
+
+console.log(arr.slice()) // this just makes a shallow copy, the same as ...spread
+
+
+// ----- splice ------
+
+// will change the original array
+
+console.log(arr.splice(2)) // will only leave the first 2 elements, arr will then have the rest removed
+console.log(arr)
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+console.log(arr.splice(-1)) // works from the end
+console.log(arr)
