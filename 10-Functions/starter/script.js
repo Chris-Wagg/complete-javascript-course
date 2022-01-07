@@ -281,3 +281,21 @@
 // // //use call here to make sure this points to the object with the array given
 
 
+
+
+
+
+
+//-------------- immediately invoked functions -----------------------
+
+const oneFunc = function () {
+  console.log('will run once')
+}
+
+oneFunc()
+  // might have a function that we only want running once, but this can be called later on as well
+
+
+  (function () {
+    console.log('This is now an expression')
+  })()
