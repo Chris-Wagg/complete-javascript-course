@@ -149,3 +149,15 @@ console.log(arr[0])
 console.log(arr.at(0))
 // these do the same thing
 
+
+// gettign the last element
+// old methods
+console.log(arr[arr.length - 1])
+console.log(arr.slice(-1)[0])
+
+//using at
+console.log(arr.at(-1))
+
+// at method also works on strings
+console.log('jefff'.at(0))
+console.log('jefff'.at(-1))
