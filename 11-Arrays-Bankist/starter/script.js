@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -143,21 +143,50 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // --------- AT method --------------------
 
 
-const arr = [1, 2, 3]
+// const arr = [1, 2, 3]
 
-console.log(arr[0])
-console.log(arr.at(0))
-// these do the same thing
+// console.log(arr[0])
+// console.log(arr.at(0))
+// // these do the same thing
 
 
-// gettign the last element
-// old methods
-console.log(arr[arr.length - 1])
-console.log(arr.slice(-1)[0])
+// // gettign the last element
+// // old methods
+// console.log(arr[arr.length - 1])
+// console.log(arr.slice(-1)[0])
 
-//using at
-console.log(arr.at(-1))
+// //using at
+// console.log(arr.at(-1))
 
-// at method also works on strings
-console.log('jefff'.at(0))
-console.log('jefff'.at(-1))
+// // at method also works on strings
+// console.log('jefff'.at(0))
+// console.log('jefff'.at(-1))
+
+
+
+
+// ---------------- for of/each -------------------------
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+
+// for (const move of movements) {
+for (const [i, move] of movements.entries()) { // this gives us a counter. First param is the index and the second is the current element, other way round than forEach
+  if (move > 0) {
+    console.log(`${i + 1} jeff ${move}`)
+  } else {
+    console.log(`${i + 1} steve ${move}`)
+  }
+}
+
+console.log('--------------forEach ---------------')
+//break and continue will not work with forEach, if you want to break a loop you need to use for of
+
+// for each will run the function for each element of the array
+movements.forEach(function (move, index, array) { // requires a callback as arg 1. with forEach, first param is the current element and the second is the index
+  if (move > 0) {
+    console.log(`${index + 1} jeff ${move}`)
+  } else {
+    console.log(`${index + 1} steve ${move}`)
+  }
+})
