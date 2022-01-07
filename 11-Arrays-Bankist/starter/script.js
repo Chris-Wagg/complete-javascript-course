@@ -80,32 +80,72 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // ------------- array methods -----------------------
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
-// slice -----
+// // slice -----
 
-const a = arr.slice(2) // returns new array, first arg is the starting place of the slice (will include that index)
-const b = arr.slice(2, 4) // second arg is the end of the slice. It will only slice as many as the second arg - first arg, so 4-2 = 2 etc
+// const a = arr.slice(2) // returns new array, first arg is the starting place of the slice (will include that index)
+// const b = arr.slice(2, 4) // second arg is the end of the slice. It will only slice as many as the second arg - first arg, so 4-2 = 2 etc
 
-console.log(arr)
-console.log(a)
-console.log(b)
+// console.log(arr)
+// console.log(a)
+// console.log(b)
 
-console.log(arr.slice(-1)) // this works from the end instead
-console.log(arr.slice(1, -1)) // this works sfrom both sides at the same time
-
-
-console.log(arr.slice()) // this just makes a shallow copy, the same as ...spread
+// console.log(arr.slice(-1)) // this works from the end instead
+// console.log(arr.slice(1, -1)) // this works sfrom both sides at the same time
 
 
-// ----- splice ------
+// console.log(arr.slice()) // this just makes a shallow copy, the same as ...spread
 
-// will change the original array
 
-console.log(arr.splice(2)) // will only leave the first 2 elements, arr will then have the rest removed
-console.log(arr)
+// // ----- splice ------
 
-arr = [1, 2, 3, 4, 5, 6, 7, 8]
+// // will change the original array
 
-console.log(arr.splice(-1)) // works from the end
-console.log(arr)
+// console.log(arr.splice(2)) // will only leave the first 2 elements, arr will then have the rest removed
+// console.log(arr)
+
+// arr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+// console.log(arr.splice(-1)) // works from the end
+// console.log(arr)
+
+// console.log(arr.splice(1, 2)) // same as slice etc
+
+
+// // -------- reverse ---------
+// // will also change the original array
+
+// arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// console.log(arr.reverse())
+// console.log(arr)
+
+
+// // ---------- concat ----------
+// // this will not mutate the original array
+
+// let arr2 = ['a', 'b', 'c', 'd', 'e', 'f']
+
+// const nums = arr.concat(arr2) // first array is what the method is being called on, the second is what's being passed to the method to join onto the end
+// console.log(nums)
+// console.log(...arr, ...arr2) // this does the same thing
+
+
+
+// // -------- join ---------
+
+// console.log(nums.join(' = ')) // the spaces within the single quotes matter
+
+
+
+
+// --------- AT method --------------------
+
+
+const arr = [1, 2, 3]
+
+console.log(arr[0])
+console.log(arr.at(0))
+// these do the same thing
+
