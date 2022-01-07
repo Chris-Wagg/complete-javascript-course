@@ -286,16 +286,44 @@
 
 
 
-//-------------- immediately invoked functions -----------------------
+// //-------------- immediately invoked functions -----------------------
+// // this isn't really used anymore unless you need to run something only once in your code
 
-const oneFunc = function () {
-  console.log('will run once')
+// const runOnce = function () {
+//   console.log('This will run only when called')
+// }
+// runOnce();
+// // // might have a function that we only want running once, but this can be called later on as well
+// // to avoid conflict with an IIFE, you need to include a ; after the called function otherwise it will read the () at the end of the IIFE as running the above function again
+// //ie: runOnce() (**This is where the IIFE would be) ()
+
+
+// (function () {
+//   console.log('This is now an expression and will run regardless')
+// })();
+// // need ; at end to avoid trying to run a function again with the next ()
+
+// (() => console.log('IIFE arrow function'))()
+
+
+
+
+
+
+// --------------- closures -------------------------------
+
+const secureBook = function () {
+  let passCnt = 0
+
+  return function () {
+    passCnt++
+    console.log(passCnt)
+  }
 }
 
-oneFunc()
-  // might have a function that we only want running once, but this can be called later on as well
+const booker = secureBook()
 
 
-  (function () {
-    console.log('This is now an expression')
-  })()
+// closures gives a fucntion access to all the varibles of its parent function even after thay parent funciton has returned. the function keeps a refernce to it's outer scope which preserves the scope chain
+
+// closure is an internal property of a funciton
