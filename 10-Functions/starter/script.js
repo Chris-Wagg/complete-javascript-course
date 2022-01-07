@@ -310,20 +310,33 @@
 
 
 
-// --------------- closures -------------------------------
+// // --------------- closures -------------------------------
 
-const secureBook = function () {
-  let passCnt = 0
+// const secureBook = function () {
+//   let passCnt = 0
 
-  return function () {
-    passCnt++
-    console.log(passCnt)
-  }
-}
+//   return function () {
+//     passCnt++
+//     console.log(passCnt)
+//   }
+// }
 
-const booker = secureBook()
+// const booker = secureBook()
 
 
-// closures gives a fucntion access to all the varibles of its parent function even after thay parent funciton has returned. the function keeps a refernce to it's outer scope which preserves the scope chain
+// // closures gives a fucntion access to all the varibles of its parent function even after thay parent funciton has returned. the function keeps a refernce to it's outer scope which preserves the scope chain
 
-// closure is an internal property of a funciton
+// // closure is an internal property of a funciton
+
+
+
+/////////////////// coding challenge 2 //////////////////////////
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
