@@ -61,15 +61,52 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+
+
+
+
+
+
+// better to pass data into a function to work with it
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '' // this will empty the container before populating it. innerHTML will return all the html, not just textcontent
+  movements.forEach(function (mov, i) { // value and index
+
+    const type = mov > 0 ? 'deposit' : 'withdrawal'
+
+    const html = `
+        <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1} ${type} </div>
+        <div class="movements__value">${mov}</div>
+      </div>`
+
+    containerMovements.insertAdjacentHTML('afterbegin', html)
+
+  })
+}
+
+displayMovements(account1.movements)
+
+
+// console.log(containerMovements.innerHTML)
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -167,26 +204,57 @@ const currencies = new Map([
 
 // ---------------- for of/each -------------------------
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
-// for (const move of movements) {
-for (const [i, move] of movements.entries()) { // this gives us a counter. First param is the index and the second is the current element, other way round than forEach
-  if (move > 0) {
-    console.log(`${i + 1} jeff ${move}`)
-  } else {
-    console.log(`${i + 1} steve ${move}`)
-  }
-}
+// // for (const move of movements) {
+// for (const [i, move] of movements.entries()) { // this gives us a counter. First param is the index and the second is the current element, other way round than forEach
+//   if (move > 0) {
+//     console.log(`${i + 1} jeff ${move}`)
+//   } else {
+//     console.log(`${i + 1} steve ${move}`)
+//   }
+// }
 
-console.log('--------------forEach ---------------')
-//break and continue will not work with forEach, if you want to break a loop you need to use for of
+// console.log('--------------forEach ---------------')
+// //break and continue will not work with forEach, if you want to break a loop you need to use for of
 
-// for each will run the function for each element of the array
-movements.forEach(function (move, index, array) { // requires a callback as arg 1. with forEach, first param is the current element and the second is the index
-  if (move > 0) {
-    console.log(`${index + 1} jeff ${move}`)
-  } else {
-    console.log(`${index + 1} steve ${move}`)
-  }
-})
+// // for each will run the function for each element of the array
+// movements.forEach(function (move, index, array) { // requires a callback as arg 1. with forEach, first param is the current element and the second is the index
+//   if (move > 0) {
+//     console.log(`${index + 1} jeff ${move}`)
+//   } else {
+//     console.log(`${index + 1} steve ${move}`)
+//   }
+// })
+
+
+
+// ------ forEach with maps and sets --------------------
+
+
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
+
+
+// currencies.forEach(function (currentValue, key, loopedMap) {
+//   console.log(`${key}: ${currentValue}`)
+// })
+
+
+// // ---- set ----
+
+// const currSet = new Set(['usd', 'gbp', 'usd', 'eur', 'eur'])
+// console.log(currSet)
+// currSet.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`)
+//   // fo a set, the value and the key are the same, can just re-write key to something else to make sure it's just a throw away.
+
+// })
+
+
+
+
