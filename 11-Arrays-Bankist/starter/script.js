@@ -251,10 +251,94 @@ displayMovements(account1.movements)
 // console.log(currSet)
 // currSet.forEach(function (value, key, map) {
 //   console.log(`${key}: ${value}`)
-//   // fo a set, the value and the key are the same, can just re-write key to something else to make sure it's just a throw away.
+//   // for a set, the value and the key are the same, can just re-write key to something else to make sure it's just a throw away.
 
 // })
 
 
+// ------------------- data transforming with map/ filter/ reduce ---------------------
 
 
+// map is similar to forEach but makes a new array
+// builds new array with the restult of the operation applied to the original array
+
+// filter will loook for elements that pass the specified test to make a new array with
+
+// reduce will try to make one value out of many in an array
+
+
+
+// ----- map ------
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// const etu = 1.1
+
+// const ex = movements.map(function (arrValue) {
+//   return arrValue * etu
+// })
+// // this is more like functional programming which is the meta
+
+
+// //arrow function
+// // const ex = movements.map(arrValue => arrValue * etu
+// // )
+
+// console.log(movements)
+// console.log(ex)
+
+// // map has access to the current element, index and the whole array (same as forEach)
+
+
+// const jeff = movements.map((mov, i, arr) => {
+//   if (mov > 0) {
+//     return `move ${i + 1} deposit ${mov}`
+//   } else {
+//     return `move ${i + 1} withdraw ${Math.abs(mov)}`
+//   }
+// }
+// )
+// console.log(jeff)
+
+
+
+// // can rewrite as
+// const jeff2 = movements.map((mov, i) =>
+//   `move ${i + 1}: you ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+// )
+// console.log(jeff2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ----------- coding challenge 1 ---------
+
+// const checkDogs = function (dogJ, dogK) {
+
+//   const dogJcor = dogJ.slice()
+//   dogJcor.splice(0, 1)
+//   dogJcor.splice(-2)
+//   // console.log(dogJcor)
+
+//   const dogs = dogJcor.concat(dogK)
+//   console.log(dogs)
+
+//   dogs.forEach(function (dog, i) {
+//     if (dog >= 3) {
+//       console.log(`dog num ${i + 1} and ${dog} years old`)
+//     } else {
+//       console.log(`dog num ${i + 1} is pup`)
+//     }
+//   })
+// }
+
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 6, 3])
