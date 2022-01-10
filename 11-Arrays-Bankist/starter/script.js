@@ -65,8 +65,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 
 
-
-
 // better to pass data into a function to work with it
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '' // this will empty the container before populating it. innerHTML will return all the html, not just textcontent
@@ -91,6 +89,53 @@ displayMovements(account1.movements)
 // console.log(containerMovements.innerHTML)
 
 
+// ----- compute usernames -----
+
+// const user = 'Steven Thomas Williams'
+// const name = user.toLowerCase().split(' ').map(function (word) {
+//   return word[0]
+// }).join('')
+
+// // or with arrow function
+// const user = 'Steven Thomas Williams'
+// const name = user.toLowerCase()
+//   .split(' ')
+//   .map(word => word[0])
+//   .join('')
+
+
+
+// // in a function
+// const userName = function (user) {
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('')
+//   return username
+// }
+// console.log(userName('Steven Thomas Williams'))
+
+
+
+// // getting all the usernames
+// const userName = function (accs) {
+//   accs.forEach(function (acc) {
+//     acc.username = acc.owner // is adding a username key for each owner found, usingthe owner value to then make the username
+//       .toLowerCase()
+//       .split(' ')
+//       .map(name => name[0])
+//       .join('')
+//   })
+// }
+// userName(accounts) // from the accounts array
+// console.log(accounts)
+
+
+
+
+
+
 
 
 
@@ -111,9 +156,6 @@ displayMovements(account1.movements)
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-
-
-
 
 // ------------- array methods -----------------------
 
@@ -309,6 +351,24 @@ displayMovements(account1.movements)
 // console.log(jeff2)
 
 
+// ------------- filter method -------------------
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// // the slightly better method to use to maintain functional programming. Also better to use bcause you can chain methods which you could not do with just a for loop
+// const deposits = movements.filter(function (mov) {
+//   return mov > 0
+// })
+
+// console.log(movements)
+// console.log(deposits)
+
+
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0
+// })
+// console.log(movements)
+// console.log(withdrawals)
 
 
 
