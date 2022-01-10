@@ -61,10 +61,6 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-
-
-
-
 // better to pass data into a function to work with it
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '' // this will empty the container before populating it. innerHTML will return all the html, not just textcontent
@@ -108,12 +104,44 @@ const summary = function (movements) {
     })
     .reduce((acc, int) => acc + int, 0)
   labelSumInterest.textContent = `${interest}`
-
-
 }
 summary(account1.movements)
 
 // console.log(containerMovements.innerHTML)
+
+const userName = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('')
+  })
+}
+userName(accounts)
+
+//event handler
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault(); // will stop the form submitting
+  console.log('login')
+
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value)
+
+  console.log(currentAccount)
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) { //optional chaining here
+    console.log('login')
+  }
+})
+
+
+
+
+
 
 
 // ----- compute usernames -----
@@ -150,8 +178,6 @@ summary(account1.movements)
 // calcBalance(account1.movements)
 
 
-
-
 // // getting all the usernames
 // const userName = function (accs) {
 //   accs.forEach(function (acc) {
@@ -164,15 +190,6 @@ summary(account1.movements)
 // }
 // userName(accounts) // from the accounts array
 // console.log(accounts)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -387,7 +404,7 @@ summary(account1.movements)
 
 // ------------- filter method -------------------
 // returns all elements that meet the condition
-// returns a new array 
+// returns a new array
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
@@ -453,19 +470,19 @@ summary(account1.movements)
 
 
 
-// ------------------- find method -------------------------
-// needs a callback that returns a boolean 
-// will only return the first element that satisfies the condition
-// only returns the one element, not an array
+// // ------------------- find method -------------------------
+// // needs a callback that returns a boolean
+// // will only return the first element that satisfies the condition
+// // only returns the one element, not an array
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const jeff = movements.find(mov => mov < 0)
-console.log(jeff)
+// const jeff = movements.find(mov => mov < 0)
+// console.log(jeff)
 
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis')
-console.log(account)
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+// console.log(account)
 
 
 
