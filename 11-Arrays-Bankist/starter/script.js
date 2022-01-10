@@ -374,6 +374,21 @@ displayMovements(account1.movements)
 
 
 
+// ---------------- reduce method -------------------------
+//the first argument for the reduce callback is actually the accumulator 
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+const balance = movements.reduce(function (accumulator, currentElement, index, array) {
+  console.log(`iteration ${index} : ${accumulator}`)
+  return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
+}, 0) // this second value is the initial number that the accumulator will start as
+
+
+
+
+
 
 
 
