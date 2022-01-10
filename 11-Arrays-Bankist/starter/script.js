@@ -92,6 +92,27 @@ const calcBalance = function (movements) {
 calcBalance(account1.movements)
 
 
+const summary = function (movements) {
+  const incomes = movements.filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0)
+  labelSumIn.textContent = `${incomes}`
+
+  const out = movements.filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0)
+  labelSumOut.textContent = `${Math.abs(out)}`
+
+  const interest = movements.filter(mov => mov > 0)
+    .map(deposit => deposit * 1.2 / 100)
+    .filter((int, i, arr) => {
+      return int >= 1
+    })
+    .reduce((acc, int) => acc + int, 0)
+  labelSumInterest.textContent = `${interest}`
+
+
+}
+summary(account1.movements)
+
 // console.log(containerMovements.innerHTML)
 
 
@@ -365,6 +386,8 @@ calcBalance(account1.movements)
 
 
 // ------------- filter method -------------------
+// returns all elements that meet the condition
+// returns a new array 
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
@@ -416,15 +439,33 @@ calcBalance(account1.movements)
 // ----------------- chaining methods ---------------------
 
 
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// const convert = movements.filter(mov => mov > 0) // will return new array
+//   .map((mov, i, arr) => mov * 1.1) // will return an array. Can use the arr param to then check what the current state of the array is if we need to debug
+//   .reduce((acc, mov) => acc + mov, 0) // will return a value
+
+// console.log(convert)
+
+
+
+
+
+
+
+// ------------------- find method -------------------------
+// needs a callback that returns a boolean 
+// will only return the first element that satisfies the condition
+// only returns the one element, not an array
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const convert = movements.filter(mov => mov > 0) // will return new array
-  .map((mov, i, arr) => mov * 1.1) // will return an array. Can use the arr param to then check what the current state of the array is if we need to debug
-  .reduce((acc, mov) => acc + mov, 0) // will return a value
-
-console.log(convert)
+const jeff = movements.find(mov => mov < 0)
+console.log(jeff)
 
 
+const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+console.log(account)
 
 
 
@@ -479,3 +520,14 @@ console.log(convert)
 
 // const avg1 = calcAge([5, 2, 4, 1, 15, 8, 3])
 // console.log(avg1)
+
+// --------- challenge 3 -----------
+
+// const calcAge = ages =>
+//   ages
+//     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter(age => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age / arr.length, 0)
+
+// const jeff = calcAge([5, 2, 4, 1, 15, 8, 3])
+// console.log(jeff)
