@@ -81,9 +81,9 @@ const displayMovements = function (movements) {
 
 // displayMovements(account1.movements)
 
-const calcBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${balance} EUR`
+const calcBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0) // create a new key and set it to the value
+  labelBalance.textContent = `${acc.balance} EUR`
 }
 // calcBalance(account1.movements)
 
@@ -109,6 +109,7 @@ const summary = function (acc) { // taking inthe whole account
 
 // console.log(containerMovements.innerHTML)
 
+// make username
 const userName = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -119,6 +120,19 @@ const userName = function (accs) {
   })
 }
 userName(accounts)
+
+
+//update the ui after a transfer
+const updateUI = function (acc) {
+  // display movements
+  displayMovements(acc.movements)
+
+  // display balance
+  calcBalance(acc)
+
+  // display summary
+  summary(acc)
+}
 
 //event handler
 
@@ -145,24 +159,28 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '' // this works because ti works right rot left 
     inputLoginPin.blur() // this makes something lose focus
 
-
-    // display movements
-    displayMovements(currentAccount.movements)
-
-    // display balance
-    calcBalance(currentAccount.movements)
-
-    // display summary
-    summary(currentAccount)
-
-
-
-
-
+    // updates the ui
+    updateUI(currentAccount)
   }
 })
 
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault()
 
+  const amount = Number(inputTransferAmount.value)
+  const recieverAcc = accounts.find(acc => acc.username === inputTransferTo.value) // find the username
+  inputTransferAmount.value = inputTransferTo.value = ''
+
+  if (amount > 0 && recieverAcc && currentAccount.balance >= amount && recieverAcc?.username !== currentAccount.username) {
+    currentAccount.movements.push(-amount)
+    recieverAcc.movements.push(amount)
+
+    // updates the ui
+    updateUI(currentAccount)
+  }
+
+
+})
 
 
 
