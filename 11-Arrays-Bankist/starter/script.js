@@ -85,6 +85,12 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements)
 
+const calcBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance} EUR`
+}
+calcBalance(account1.movements)
+
 
 // console.log(containerMovements.innerHTML)
 
@@ -116,11 +122,11 @@ displayMovements(account1.movements)
 // }
 // console.log(userName('Steven Thomas Williams'))
 
-const calcBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0)
-  labelBalance.textContent = `${balance} EUR`
-}
-calcBalance(account1.movements)
+// const calcBalance = function (movements) {
+//   const balance = movements.reduce((acc, mov) => acc + mov, 0)
+//   labelBalance.textContent = `${balance} EUR`
+// }
+// calcBalance(account1.movements)
 
 
 
@@ -382,27 +388,47 @@ calcBalance(account1.movements)
 
 
 // ---------------- reduce method -------------------------
-//the first argument for the reduce callback is actually the accumulator 
+//the first argument for the reduce callback is actually the accumulator
+
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// const balance = movements.reduce(function (accumulator, currentElement, index, array) {
+//   console.log(`iteration ${index} : ${accumulator}`)
+//   return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
+// }, 0) // this second value is the initial number that the accumulator will start as
+
+
+// //max value
+
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov)
+//     return acc
+//   else
+//     return mov
+// }, movements[0]) // better to use the first array value to avoid weird things happening if you just used 0 instead
+
+// console.log(max)
+
+
+
+
+// ----------------- chaining methods ---------------------
 
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-const balance = movements.reduce(function (accumulator, currentElement, index, array) {
-  console.log(`iteration ${index} : ${accumulator}`)
-  return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
-}, 0) // this second value is the initial number that the accumulator will start as
+const convert = movements.filter(mov => mov > 0) // will return new array
+  .map((mov, i, arr) => mov * 1.1) // will return an array. Can use the arr param to then check what the current state of the array is if we need to debug
+  .reduce((acc, mov) => acc + mov, 0) // will return a value
+
+console.log(convert)
 
 
-//max value
 
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov)
-    return acc
-  else
-    return mov
-}, movements[0]) // better to use the first array value to avoid weird things happening if you just used 0 instead 
 
-console.log(max)
+
+
 
 
 
@@ -435,3 +461,21 @@ console.log(max)
 // }
 
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 6, 3])
+
+// ----- challange 2 ----------
+
+
+// const calcAge = function (ages) {
+//   const humAge = ages.map(age => age <= 2 ? 2 * age : 16 + age * 4)
+//   // console.log(humAge)
+//   const adult = humAge.filter(age => age >= 18)
+//   console.log(humAge)
+//   console.log(adult)
+
+//   const average = adult.reduce((acc, age) => acc + age, 0) / adult.length
+
+//   return average
+// }
+
+// const avg1 = calcAge([5, 2, 4, 1, 15, 8, 3])
+// console.log(avg1)
