@@ -134,7 +134,7 @@ const updateUI = function (acc) {
   summary(acc)
 }
 
-//event handler
+//event handlers
 
 let currentAccount;
 
@@ -178,8 +178,22 @@ btnTransfer.addEventListener('click', function (e) {
     // updates the ui
     updateUI(currentAccount)
   }
+})
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault()
 
 
+
+  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
+
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username)
+
+    accounts.splice(index, 1) // this will mutate the array so you dont need to save it to a variable
+
+    containerApp.style.opacity = 0
+  }
+  inputClosePin.value = inputCloseUsername.value = ''
 })
 
 
@@ -529,10 +543,10 @@ btnTransfer.addEventListener('click', function (e) {
 
 
 
+// ------------- findIndex --------------------------
+// returns the index of the found element
 
-
-
-
+// test.findIndex(element, index, array) // has access to all
 
 
 
