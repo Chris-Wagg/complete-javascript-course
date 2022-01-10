@@ -116,6 +116,13 @@ displayMovements(account1.movements)
 // }
 // console.log(userName('Steven Thomas Williams'))
 
+const calcBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  labelBalance.textContent = `${balance} EUR`
+}
+calcBalance(account1.movements)
+
+
 
 
 // // getting all the usernames
@@ -385,6 +392,17 @@ const balance = movements.reduce(function (accumulator, currentElement, index, a
   return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
 }, 0) // this second value is the initial number that the accumulator will start as
 
+
+//max value
+
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov)
+    return acc
+  else
+    return mov
+}, movements[0]) // better to use the first array value to avoid weird things happening if you just used 0 instead 
+
+console.log(max)
 
 
 
