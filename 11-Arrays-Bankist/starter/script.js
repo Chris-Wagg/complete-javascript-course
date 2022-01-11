@@ -62,9 +62,13 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // better to pass data into a function to work with it
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '' // this will empty the container before populating it. innerHTML will return all the html, not just textcontent
-  movements.forEach(function (mov, i) { // value and index
+
+  const sorting = sort ? movements.slice().sort((a, b) => a - b) : movements
+
+
+  sorting.forEach(function (mov, i) { // value and index
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
 
@@ -193,14 +197,8 @@ btnLoan.addEventListener('click', function (e) {
 })
 
 
-
-
-
-
-
 btnClose.addEventListener('click', function (e) {
   e.preventDefault()
-
 
 
   if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
@@ -215,6 +213,13 @@ btnClose.addEventListener('click', function (e) {
 })
 
 
+let sorted = false
+
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault()
+  displayMovements(currentAccount.movements, !sorted)
+  sorted = !sorted
+})
 
 
 
