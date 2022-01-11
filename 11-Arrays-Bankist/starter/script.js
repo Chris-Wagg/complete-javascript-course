@@ -180,6 +180,24 @@ btnTransfer.addEventListener('click', function (e) {
   }
 })
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  const amount = Number(inputLoanAmount.value)
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) { // if movements are greater than 10% of amount
+    currentAccount.movements.push(amount)
+    updateUI(currentAccount)
+  }
+  inputLoanAmount.value = ''
+})
+
+
+
+
+
+
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault()
 
@@ -547,6 +565,79 @@ btnClose.addEventListener('click', function (e) {
 // returns the index of the found element
 
 // test.findIndex(element, index, array) // has access to all
+
+
+
+
+
+
+
+// // ---------------------- some / every methods ------------------------
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+// console.log(movements.includes(-130)) // checks only for exact equlity
+
+
+// // checks a condition. if there is any value for whch the condition is true, then the sum method will return true
+// const a = movements.some(mov => mov > 1500)
+// console.log(a)
+
+
+
+
+// // every
+// // only returns true if ALL elements in the array satisfy the condition
+// console.log(movements.every(mov => mov > 0))
+// console.log(account4.movements.every(mov => mov > 0))
+
+
+// // separate callback
+
+// const d = mov => mov > 0
+// console.log(movements.some(d))
+
+
+
+
+
+
+// // -------------- flat / flatmap methods -------------------------
+
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
+// //will basically put everything in just 1 array. Will only work 1 level down
+// console.log(arr.flat())
+
+
+// const arrDeep = [[1, [2, [3]]], [4, [5, 6]], 7, [8]]
+// //can add the number as a arg for flat to tell it how many levels to go down, 1 is the default
+// console.log(arrDeep.flat(3))
+
+
+
+// const all = accounts.map(acc => acc.movements).flat() // this is common
+// console.log(all)
+
+// const overall = all.reduce((acc, mov) => acc + mov, 0) // could chain this after the flat above as well
+// console.log(overall)
+
+
+
+// //flat map
+// // will only flat to 1 level deep though
+// const flatmap = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0)
+// console.log(flatmap)
+
+
+
+
+
+// ------------- sorting arrays -----------------
+
+
+
+
+
 
 
 
