@@ -223,325 +223,325 @@ btnSort.addEventListener('click', function (e) {
 
 
 
-// ----- compute usernames -----
+  // ----- compute usernames -----
 
-// const user = 'Steven Thomas Williams'
-// const name = user.toLowerCase().split(' ').map(function (word) {
-//   return word[0]
-// }).join('')
+  // const user = 'Steven Thomas Williams'
+  // const name = user.toLowerCase().split(' ').map(function (word) {
+  //   return word[0]
+  // }).join('')
 
-// // or with arrow function
-// const user = 'Steven Thomas Williams'
-// const name = user.toLowerCase()
-//   .split(' ')
-//   .map(word => word[0])
-//   .join('')
+  // // or with arrow function
+  // const user = 'Steven Thomas Williams'
+  // const name = user.toLowerCase()
+  //   .split(' ')
+  //   .map(word => word[0])
+  //   .join('')
 
 
 
-// // in a function
-// const userName = function (user) {
-//   const username = user
-//     .toLowerCase()
-//     .split(' ')
-//     .map(name => name[0])
-//     .join('')
-//   return username
-// }
-// console.log(userName('Steven Thomas Williams'))
+  // // in a function
+  // const userName = function (user) {
+  //   const username = user
+  //     .toLowerCase()
+  //     .split(' ')
+  //     .map(name => name[0])
+  //     .join('')
+  //   return username
+  // }
+  // console.log(userName('Steven Thomas Williams'))
 
-// const calcBalance = function (movements) {
-//   const balance = movements.reduce((acc, mov) => acc + mov, 0)
-//   labelBalance.textContent = `${balance} EUR`
-// }
-// calcBalance(account1.movements)
+  // const calcBalance = function (movements) {
+  //   const balance = movements.reduce((acc, mov) => acc + mov, 0)
+  //   labelBalance.textContent = `${balance} EUR`
+  // }
+  // calcBalance(account1.movements)
 
 
-// // getting all the usernames
-// const userName = function (accs) {
-//   accs.forEach(function (acc) {
-//     acc.username = acc.owner // is adding a username key for each owner found, usingthe owner value to then make the username
-//       .toLowerCase()
-//       .split(' ')
-//       .map(name => name[0])
-//       .join('')
-//   })
-// }
-// userName(accounts) // from the accounts array
-// console.log(accounts)
+  // // getting all the usernames
+  // const userName = function (accs) {
+  //   accs.forEach(function (acc) {
+  //     acc.username = acc.owner // is adding a username key for each owner found, usingthe owner value to then make the username
+  //       .toLowerCase()
+  //       .split(' ')
+  //       .map(name => name[0])
+  //       .join('')
+  //   })
+  // }
+  // userName(accounts) // from the accounts array
+  // console.log(accounts)
 
 
 
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
+  // LECTURES
 
-// const currencies = new Map([
-//   ['USD', 'United States dollar'],
-//   ['EUR', 'Euro'],
-//   ['GBP', 'Pound sterling'],
-// ]);
+  // const currencies = new Map([
+  //   ['USD', 'United States dollar'],
+  //   ['EUR', 'Euro'],
+  //   ['GBP', 'Pound sterling'],
+  // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+  /////////////////////////////////////////////////
 
-// ------------- array methods -----------------------
+  // ------------- array methods -----------------------
 
-// let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+  // let arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
-// // slice -----
+  // // slice -----
 
-// const a = arr.slice(2) // returns new array, first arg is the starting place of the slice (will include that index)
-// const b = arr.slice(2, 4) // second arg is the end of the slice. It will only slice as many as the second arg - first arg, so 4-2 = 2 etc
+  // const a = arr.slice(2) // returns new array, first arg is the starting place of the slice (will include that index)
+  // const b = arr.slice(2, 4) // second arg is the end of the slice. It will only slice as many as the second arg - first arg, so 4-2 = 2 etc
 
-// console.log(arr)
-// console.log(a)
-// console.log(b)
+  // console.log(arr)
+  // console.log(a)
+  // console.log(b)
 
-// console.log(arr.slice(-1)) // this works from the end instead
-// console.log(arr.slice(1, -1)) // this works sfrom both sides at the same time
+  // console.log(arr.slice(-1)) // this works from the end instead
+  // console.log(arr.slice(1, -1)) // this works sfrom both sides at the same time
 
 
-// console.log(arr.slice()) // this just makes a shallow copy, the same as ...spread
+  // console.log(arr.slice()) // this just makes a shallow copy, the same as ...spread
 
 
-// // ----- splice ------
+  // // ----- splice ------
 
-// // will change the original array
+  // // will change the original array
 
-// console.log(arr.splice(2)) // will only leave the first 2 elements, arr will then have the rest removed
-// console.log(arr)
+  // console.log(arr.splice(2)) // will only leave the first 2 elements, arr will then have the rest removed
+  // console.log(arr)
 
-// arr = [1, 2, 3, 4, 5, 6, 7, 8]
+  // arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
-// console.log(arr.splice(-1)) // works from the end
-// console.log(arr)
+  // console.log(arr.splice(-1)) // works from the end
+  // console.log(arr)
 
-// console.log(arr.splice(1, 2)) // same as slice etc
+  // console.log(arr.splice(1, 2)) // same as slice etc
 
 
-// // -------- reverse ---------
-// // will also change the original array
+  // // -------- reverse ---------
+  // // will also change the original array
 
-// arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  // arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-// console.log(arr.reverse())
-// console.log(arr)
+  // console.log(arr.reverse())
+  // console.log(arr)
 
 
-// // ---------- concat ----------
-// // this will not mutate the original array
+  // // ---------- concat ----------
+  // // this will not mutate the original array
 
-// let arr2 = ['a', 'b', 'c', 'd', 'e', 'f']
+  // let arr2 = ['a', 'b', 'c', 'd', 'e', 'f']
 
-// const nums = arr.concat(arr2) // first array is what the method is being called on, the second is what's being passed to the method to join onto the end
-// console.log(nums)
-// console.log(...arr, ...arr2) // this does the same thing
+  // const nums = arr.concat(arr2) // first array is what the method is being called on, the second is what's being passed to the method to join onto the end
+  // console.log(nums)
+  // console.log(...arr, ...arr2) // this does the same thing
 
 
 
-// // -------- join ---------
+  // // -------- join ---------
 
-// console.log(nums.join(' = ')) // the spaces within the single quotes matter
+  // console.log(nums.join(' = ')) // the spaces within the single quotes matter
 
 
 
 
-// --------- AT method --------------------
+  // --------- AT method --------------------
 
 
-// const arr = [1, 2, 3]
+  // const arr = [1, 2, 3]
 
-// console.log(arr[0])
-// console.log(arr.at(0))
-// // these do the same thing
+  // console.log(arr[0])
+  // console.log(arr.at(0))
+  // // these do the same thing
 
 
-// // gettign the last element
-// // old methods
-// console.log(arr[arr.length - 1])
-// console.log(arr.slice(-1)[0])
+  // // gettign the last element
+  // // old methods
+  // console.log(arr[arr.length - 1])
+  // console.log(arr.slice(-1)[0])
 
-// //using at
-// console.log(arr.at(-1))
+  // //using at
+  // console.log(arr.at(-1))
 
-// // at method also works on strings
-// console.log('jefff'.at(0))
-// console.log('jefff'.at(-1))
+  // // at method also works on strings
+  // console.log('jefff'.at(0))
+  // console.log('jefff'.at(-1))
 
 
 
 
-// ---------------- for of/each -------------------------
+  // ---------------- for of/each -------------------------
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
-// // for (const move of movements) {
-// for (const [i, move] of movements.entries()) { // this gives us a counter. First param is the index and the second is the current element, other way round than forEach
-//   if (move > 0) {
-//     console.log(`${i + 1} jeff ${move}`)
-//   } else {
-//     console.log(`${i + 1} steve ${move}`)
-//   }
-// }
+  // // for (const move of movements) {
+  // for (const [i, move] of movements.entries()) { // this gives us a counter. First param is the index and the second is the current element, other way round than forEach
+  //   if (move > 0) {
+  //     console.log(`${i + 1} jeff ${move}`)
+  //   } else {
+  //     console.log(`${i + 1} steve ${move}`)
+  //   }
+  // }
 
-// console.log('--------------forEach ---------------')
-// //break and continue will not work with forEach, if you want to break a loop you need to use for of
+  // console.log('--------------forEach ---------------')
+  // //break and continue will not work with forEach, if you want to break a loop you need to use for of
 
-// // for each will run the function for each element of the array
-// movements.forEach(function (move, index, array) { // requires a callback as arg 1. with forEach, first param is the current element and the second is the index
-//   if (move > 0) {
-//     console.log(`${index + 1} jeff ${move}`)
-//   } else {
-//     console.log(`${index + 1} steve ${move}`)
-//   }
-// })
+  // // for each will run the function for each element of the array
+  // movements.forEach(function (move, index, array) { // requires a callback as arg 1. with forEach, first param is the current element and the second is the index
+  //   if (move > 0) {
+  //     console.log(`${index + 1} jeff ${move}`)
+  //   } else {
+  //     console.log(`${index + 1} steve ${move}`)
+  //   }
+  // })
 
 
 
-// ------ forEach with maps and sets --------------------
+  // ------ forEach with maps and sets --------------------
 
 
-// const currencies = new Map([
-//   ['USD', 'United States dollar'],
-//   ['EUR', 'Euro'],
-//   ['GBP', 'Pound sterling'],
-// ]);
+  // const currencies = new Map([
+  //   ['USD', 'United States dollar'],
+  //   ['EUR', 'Euro'],
+  //   ['GBP', 'Pound sterling'],
+  // ]);
 
 
-// currencies.forEach(function (currentValue, key, loopedMap) {
-//   console.log(`${key}: ${currentValue}`)
-// })
+  // currencies.forEach(function (currentValue, key, loopedMap) {
+  //   console.log(`${key}: ${currentValue}`)
+  // })
 
 
-// // ---- set ----
+  // // ---- set ----
 
-// const currSet = new Set(['usd', 'gbp', 'usd', 'eur', 'eur'])
-// console.log(currSet)
-// currSet.forEach(function (value, key, map) {
-//   console.log(`${key}: ${value}`)
-//   // for a set, the value and the key are the same, can just re-write key to something else to make sure it's just a throw away.
+  // const currSet = new Set(['usd', 'gbp', 'usd', 'eur', 'eur'])
+  // console.log(currSet)
+  // currSet.forEach(function (value, key, map) {
+  //   console.log(`${key}: ${value}`)
+  //   // for a set, the value and the key are the same, can just re-write key to something else to make sure it's just a throw away.
 
-// })
+  // })
 
 
-// ------------------- data transforming with map/ filter/ reduce ---------------------
+  // ------------------- data transforming with map/ filter/ reduce ---------------------
 
 
-// map is similar to forEach but makes a new array
-// builds new array with the restult of the operation applied to the original array
+  // map is similar to forEach but makes a new array
+  // builds new array with the restult of the operation applied to the original array
 
-// filter will loook for elements that pass the specified test to make a new array with
+  // filter will loook for elements that pass the specified test to make a new array with
 
-// reduce will try to make one value out of many in an array
+  // reduce will try to make one value out of many in an array
 
 
 
-// ----- map ------
+  // ----- map ------
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// const etu = 1.1
+  // const etu = 1.1
 
-// const ex = movements.map(function (arrValue) {
-//   return arrValue * etu
-// })
-// // this is more like functional programming which is the meta
+  // const ex = movements.map(function (arrValue) {
+  //   return arrValue * etu
+  // })
+  // // this is more like functional programming which is the meta
 
 
-// //arrow function
-// // const ex = movements.map(arrValue => arrValue * etu
-// // )
+  // //arrow function
+  // // const ex = movements.map(arrValue => arrValue * etu
+  // // )
 
-// console.log(movements)
-// console.log(ex)
+  // console.log(movements)
+  // console.log(ex)
 
-// // map has access to the current element, index and the whole array (same as forEach)
+  // // map has access to the current element, index and the whole array (same as forEach)
 
 
-// const jeff = movements.map((mov, i, arr) => {
-//   if (mov > 0) {
-//     return `move ${i + 1} deposit ${mov}`
-//   } else {
-//     return `move ${i + 1} withdraw ${Math.abs(mov)}`
-//   }
-// }
-// )
-// console.log(jeff)
+  // const jeff = movements.map((mov, i, arr) => {
+  //   if (mov > 0) {
+  //     return `move ${i + 1} deposit ${mov}`
+  //   } else {
+  //     return `move ${i + 1} withdraw ${Math.abs(mov)}`
+  //   }
+  // }
+  // )
+  // console.log(jeff)
 
 
 
-// // can rewrite as
-// const jeff2 = movements.map((mov, i) =>
-//   `move ${i + 1}: you ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
-// )
-// console.log(jeff2)
+  // // can rewrite as
+  // const jeff2 = movements.map((mov, i) =>
+  //   `move ${i + 1}: you ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+  // )
+  // console.log(jeff2)
 
 
-// ------------- filter method -------------------
-// returns all elements that meet the condition
-// returns a new array
+  // ------------- filter method -------------------
+  // returns all elements that meet the condition
+  // returns a new array
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// // the slightly better method to use to maintain functional programming. Also better to use bcause you can chain methods which you could not do with just a for loop
-// const deposits = movements.filter(function (mov) {
-//   return mov > 0
-// })
+  // // the slightly better method to use to maintain functional programming. Also better to use bcause you can chain methods which you could not do with just a for loop
+  // const deposits = movements.filter(function (mov) {
+  //   return mov > 0
+  // })
 
-// console.log(movements)
-// console.log(deposits)
+  // console.log(movements)
+  // console.log(deposits)
 
 
-// const withdrawals = movements.filter(function (mov) {
-//   return mov < 0
-// })
-// console.log(movements)
-// console.log(withdrawals)
+  // const withdrawals = movements.filter(function (mov) {
+  //   return mov < 0
+  // })
+  // console.log(movements)
+  // console.log(withdrawals)
 
 
 
 
 
-// ---------------- reduce method -------------------------
-//the first argument for the reduce callback is actually the accumulator
+  // ---------------- reduce method -------------------------
+  //the first argument for the reduce callback is actually the accumulator
 
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// const balance = movements.reduce(function (accumulator, currentElement, index, array) {
-//   console.log(`iteration ${index} : ${accumulator}`)
-//   return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
-// }, 0) // this second value is the initial number that the accumulator will start as
+  // const balance = movements.reduce(function (accumulator, currentElement, index, array) {
+  //   console.log(`iteration ${index} : ${accumulator}`)
+  //   return accumulator + currentElement // acculator is what is being added to. Each call, the accum will be the current sum which is returned to then be used on the next itteration
+  // }, 0) // this second value is the initial number that the accumulator will start as
 
 
-// //max value
+  // //max value
 
-// const max = movements.reduce((acc, mov) => {
-//   if (acc > mov)
-//     return acc
-//   else
-//     return mov
-// }, movements[0]) // better to use the first array value to avoid weird things happening if you just used 0 instead
+  // const max = movements.reduce((acc, mov) => {
+  //   if (acc > mov)
+  //     return acc
+  //   else
+  //     return mov
+  // }, movements[0]) // better to use the first array value to avoid weird things happening if you just used 0 instead
 
-// console.log(max)
+  // console.log(max)
 
 
 
 
-// ----------------- chaining methods ---------------------
+  // ----------------- chaining methods ---------------------
 
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// const convert = movements.filter(mov => mov > 0) // will return new array
-//   .map((mov, i, arr) => mov * 1.1) // will return an array. Can use the arr param to then check what the current state of the array is if we need to debug
-//   .reduce((acc, mov) => acc + mov, 0) // will return a value
+  // const convert = movements.filter(mov => mov > 0) // will return new array
+  //   .map((mov, i, arr) => mov * 1.1) // will return an array. Can use the arr param to then check what the current state of the array is if we need to debug
+  //   .reduce((acc, mov) => acc + mov, 0) // will return a value
 
-// console.log(convert)
+  // console.log(convert)
 
 
 
@@ -549,27 +549,27 @@ btnSort.addEventListener('click', function (e) {
 
 
 
-// // ------------------- find method -------------------------
-// // needs a callback that returns a boolean
-// // will only return the first element that satisfies the condition
-// // only returns the one element, not an array
+  // // ------------------- find method -------------------------
+  // // needs a callback that returns a boolean
+  // // will only return the first element that satisfies the condition
+  // // only returns the one element, not an array
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// const jeff = movements.find(mov => mov < 0)
-// console.log(jeff)
+  // const jeff = movements.find(mov => mov < 0)
+  // console.log(jeff)
 
 
-// const account = accounts.find(acc => acc.owner === 'Jessica Davis')
-// console.log(account)
+  // const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+  // console.log(account)
 
 
 
 
-// ------------- findIndex --------------------------
-// returns the index of the found element
+  // ------------- findIndex --------------------------
+  // returns the index of the found element
 
-// test.findIndex(element, index, array) // has access to all
+  // test.findIndex(element, index, array) // has access to all
 
 
 
@@ -577,117 +577,269 @@ btnSort.addEventListener('click', function (e) {
 
 
 
-// // ---------------------- some / every methods ------------------------
+  // // ---------------------- some / every methods ------------------------
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// console.log(movements.includes(-130)) // checks only for exact equlity
+  // console.log(movements.includes(-130)) // checks only for exact equlity
 
 
-// // checks a condition. if there is any value for whch the condition is true, then the sum method will return true
-// const a = movements.some(mov => mov > 1500)
-// console.log(a)
+  // // checks a condition. if there is any value for whch the condition is true, then the sum method will return true
+  // const a = movements.some(mov => mov > 1500)
+  // console.log(a)
 
 
 
 
-// // every
-// // only returns true if ALL elements in the array satisfy the condition
-// console.log(movements.every(mov => mov > 0))
-// console.log(account4.movements.every(mov => mov > 0))
+  // // every
+  // // only returns true if ALL elements in the array satisfy the condition
+  // console.log(movements.every(mov => mov > 0))
+  // console.log(account4.movements.every(mov => mov > 0))
 
 
-// // separate callback
+  // // separate callback
 
-// const d = mov => mov > 0
-// console.log(movements.some(d))
+  // const d = mov => mov > 0
+  // console.log(movements.some(d))
 
 
 
 
 
 
-// // -------------- flat / flatmap methods -------------------------
+  // // -------------- flat / flatmap methods -------------------------
 
-// const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
-// //will basically put everything in just 1 array. Will only work 1 level down
-// console.log(arr.flat())
+  // const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
+  // //will basically put everything in just 1 array. Will only work 1 level down
+  // console.log(arr.flat())
 
 
-// const arrDeep = [[1, [2, [3]]], [4, [5, 6]], 7, [8]]
-// //can add the number as a arg for flat to tell it how many levels to go down, 1 is the default
-// console.log(arrDeep.flat(3))
+  // const arrDeep = [[1, [2, [3]]], [4, [5, 6]], 7, [8]]
+  // //can add the number as a arg for flat to tell it how many levels to go down, 1 is the default
+  // console.log(arrDeep.flat(3))
 
 
 
-// const all = accounts.map(acc => acc.movements).flat() // this is common
-// console.log(all)
+  // const all = accounts.map(acc => acc.movements).flat() // this is common
+  // console.log(all)
 
-// const overall = all.reduce((acc, mov) => acc + mov, 0) // could chain this after the flat above as well
-// console.log(overall)
+  // const overall = all.reduce((acc, mov) => acc + mov, 0) // could chain this after the flat above as well
+  // console.log(overall)
 
 
 
-// //flat map
-// // will only flat to 1 level deep though
-// const flatmap = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0)
-// console.log(flatmap)
+  // //flat map
+  // // will only flat to 1 level deep though
+  // const flatmap = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0)
+  // console.log(flatmap)
 
 
 
 
 
-// ------------- sorting arrays -----------------
+  // // ------------- sorting arrays -----------------
 
-// Sorting Arrays
-// will convert to strings as default
-// sort by <0, A sorted before B (keep order)
-// sort by >0, B sorted before A (switch order)
+  // // Sorting Arrays
+  // // will convert to strings as default
+  // // sort by <0, A sorted before B (keep order)
+  // // sort by >0, B sorted before A (switch order)
 
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
-// Strings
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort());
-console.log(owners);
+  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+  // // Strings
+  // const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+  // console.log(owners.sort());
+  // console.log(owners);
 
-// Numbers
-console.log(movements);
-console.log(movements.sort); // will sort alpabetically because it will convert to string
+  // // Numbers
+  // console.log(movements);
+  // console.log(movements.sort); // will sort alpabetically because it will convert to string
 
 
 
 
-// ascending
-movements.sort((a, b) => { // a is current value and b the next value
-  if (a > b)
-    return 1 // number here doesn't matter as long as it's more than 0
-  if (a < b)
-    return -1
-})
-console.log(movements)
+  // // ascending
+  // movements.sort((a, b) => { // a is current value and b the next value
+  //   if (a > b)
+  //     return 1 // number here doesn't matter as long as it's more than 0
+  //   if (a < b)
+  //     return -1
+  // })
+  // console.log(movements)
 
-// OR WRITTEN LIKE THIS
-movements.sort((a, b) => a - b)
-console.log(movements)
+  // // OR WRITTEN LIKE THIS
+  // movements.sort((a, b) => a - b)
+  // console.log(movements)
 
 
 
 
 
-// descending
-movements.sort((a, b) => { // a is current value and b the next value
-  if (a > b)
-    return -1 // number here doesn't matter as long as it's more than 0
-  if (a < b)
-    return 1
-})
-console.log(movements)
+  // // descending
+  // movements.sort((a, b) => { // a is current value and b the next value
+  //   if (a > b)
+  //     return -1 // number here doesn't matter as long as it's more than 0
+  //   if (a < b)
+  //     return 1
+  // })
+  // console.log(movements)
 
-// OR WRITTEN LIKE THIS
-movements.sort((a, b) => b - a)
-console.log(movements)
+  // // OR WRITTEN LIKE THIS
+  // movements.sort((a, b) => b - a)
+  // console.log(movements)
 
+
+
+  // // ---------- creating / filling arrays ---------------
+
+  // const x = new Array(7) // generates an array with 7 empty elements. With only one arg will make the array with jujst empty elements. Can't use normal methods on this
+  // console.log(x)
+
+
+  // x.fill(69) // will fill the array with the passed element
+  // console.log(x)
+
+  // // similar to slice, can specify where we want it to start to fill
+
+  // x.fill(69, 3) // will fill from the position of the second arg
+  // x.fill(69, 3, 5) // will stop filling at the position of the 3rd arg
+
+
+  // // can use fill on other arrays, don't need to be empty arrays
+
+  // const a = [1, 2, 3, 4, 5, 6, 7]
+  // a.fill(69, 2, 6) // will insert into the middle of the array and replace those elements with the passed number 69
+  // console.log(a)
+
+
+  // // --- .from ------
+
+  // const f = Array.from({ length: 7 }, () => 1) //using it on the constructor, not an array. First arg can be a length property object, second arg is a mapping function, like the funtion in a map method
+  // console.log(f)
+
+  // const z = Array.from({ length: 7 }, (_, i) => i + 1) // very similarto a map method callback. use the underscore to indicate a throw away arg. that position would be the current element
+  // console.log(z)
+
+
+
+  // // in practice
+  // labelBalance.addEventListener('click', function (e) {
+  //   e.preventDefault()
+
+  //   const movUI = Array.from(document.querySelectorAll('.movements_value'), el => Number(el.textContent.replace('€', '')) // use Array.from to make an arrya list form the node list of the query selector. Then use a map to convert to an array we can work with
+  //   )
+  //   console.log(movUI)
+
+  //   movUI2 = [...document.querySelectorAll('.movements_value')] // can use this would would then need to map it separately
+  // })
+
+
+
+
+
+
+
+
+  // -------- when to use array methods -------
+
+
+  // think about "I want..."
+
+
+  // 'To mutate the original array'
+
+  // add to original
+  .push() // end
+  .unshift() // start
+
+  //remove from original
+  .pop() // end 
+  .shift() // start
+  .splice() // any
+
+  //other
+  .reverse()
+  .sort()
+  .fill()
+
+
+
+  // 'A new array'
+
+  // computed from original
+  .map() // loops
+
+  // filter using condition
+  .filter()
+
+  // a portion of the original
+  .slice()
+
+  // adding another to the original
+  .concat()
+
+  // flattening the original
+  .flat()
+  .flatMap() // will replace a map and then flat chain. used to get everything into 1 array
+
+
+
+  // 'An array index'
+
+  // based on value
+  .indexOf()
+
+  // based on a test condition
+  .findIndex()
+
+
+
+  // 'An array element'
+
+  //based on test condition
+  .find()
+
+
+
+  // 'To know if an array includes...'
+
+  //based on value
+  .includes()
+
+  //based on test conditions
+  .some()
+  .every()
+
+
+
+  // 'A new string'
+
+  // based on a separator string
+  .join()
+
+
+
+  // 'To transform to value
+
+  // based on an accumulator
+  .reduce() //boils down to a single value of any type
+
+
+
+
+  // 'To just loop an array'
+
+  //based on callback
+  .forEach() // doesn't make a new array, just loops one
+
+
+
+
+// *********************************
+// you can prefix a value with ++
+
+// let a = 10
+// doing console.log(a++) will still return 10 because it will log the original value, and then increment it. if you did another console.log after, it will print 11. To fix this you can prfix the ++. console.log(++a) will fix this
 
 
 
