@@ -529,6 +529,20 @@ btnSort.addEventListener('click', function (e) {
 
   // console.log(max)
 
+  //   // 3. reducing to an object
+  // const { deposits, withdrawals } = accounts
+  // .flatMap(acc => acc.movements)
+  // .reduce(
+  //   (sums, cur) => {
+  //     // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+  //     sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+  //     return sums;
+  //   },
+  //   { deposits: 0, withdrawals: 0 }
+  // );
+
+  // console.log(deposits, withdrawals);
+
 
 
 
