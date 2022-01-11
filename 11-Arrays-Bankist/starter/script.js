@@ -634,6 +634,54 @@ btnClose.addEventListener('click', function (e) {
 
 // ------------- sorting arrays -----------------
 
+// Sorting Arrays
+// will convert to strings as default
+// sort by <0, A sorted before B (keep order)
+// sort by >0, B sorted before A (switch order)
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+console.log(movements.sort); // will sort alpabetically because it will convert to string
+
+
+
+
+// ascending
+movements.sort((a, b) => { // a is current value and b the next value
+  if (a > b)
+    return 1 // number here doesn't matter as long as it's more than 0
+  if (a < b)
+    return -1
+})
+console.log(movements)
+
+// OR WRITTEN LIKE THIS
+movements.sort((a, b) => a - b)
+console.log(movements)
+
+
+
+
+
+// descending
+movements.sort((a, b) => { // a is current value and b the next value
+  if (a > b)
+    return -1 // number here doesn't matter as long as it's more than 0
+  if (a < b)
+    return 1
+})
+console.log(movements)
+
+// OR WRITTEN LIKE THIS
+movements.sort((a, b) => b - a)
+console.log(movements)
 
 
 
