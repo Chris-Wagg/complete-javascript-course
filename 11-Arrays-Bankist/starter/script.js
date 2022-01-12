@@ -929,3 +929,15 @@ const dogs = [
 
 
 dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75)))
+
+
+const dogSar = dogs.find(dog => dog.owners.includes('Sarah'))
+
+console.log(`sarah dog eating ${dogSar.curFood > dogSar.recFood ? 'too much' : 'too little'}`)
+
+
+const ownEatMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .map(dog => dog.owners)
+  .flat()
+console.log(ownEatMuch)
