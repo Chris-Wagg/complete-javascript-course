@@ -928,7 +928,7 @@ const dogs = [
 
 
 
-dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75)))
+dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)))
 
 
 const dogSar = dogs.find(dog => dog.owners.includes('Sarah'))
@@ -938,6 +938,42 @@ console.log(`sarah dog eating ${dogSar.curFood > dogSar.recFood ? 'too much' : '
 
 const ownEatMuch = dogs
   .filter(dog => dog.curFood > dog.recFood)
-  .map(dog => dog.owners)
-  .flat()
+  .flatMap(dog => dog.owners)
+// .flat()
 console.log(ownEatMuch)
+
+
+const dogEatLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .flatMap(dog => dog.owners)
+// .flat()
+console.log(dogEatLittle)
+
+
+
+console.log(`${ownEatMuch.join(' and ')}'s dogs eat too much`)
+console.log(`${dogEatLittle.join(' and ')}'s dogs eat too little`)
+
+
+
+console.log(dogs.some(dog => dog.curFood === dog.recFood))
+
+
+
+
+// console.log(dogs.some(dog => dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1))
+
+const checkok = dog => dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1
+console.log(dogs.some(checkok))
+
+
+
+
+console.log(dogs.filter(checkok))
+
+
+
+
+
+const dogsCopy = dogs.slice().sort((a, b) => a.recFood - b.recFood)
+console.log(dogsCopy)
