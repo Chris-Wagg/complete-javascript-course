@@ -91,9 +91,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -166,9 +165,8 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -251,3 +249,44 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+
+
+
+// ------------- timers --------------------
+
+
+//setTimeout
+// will only execute once after the scheculed timeout
+setTimeout((a, b) => console.log(`here is your pizza ${a}, ${b}`),
+  3000,
+  'jeff', // becomes a
+  'alan' // becomes b
+) // a callback is the first arg, second arg is the waiting time
+
+// execution will not stop once it hits the timer, will continue on through the rest of the code but will have the setTimeout sitting waiting to run
+console.log('waiting')
+
+// if you have arguments after the timer, they will be considered as argments for the callback function (arg 1)
+
+
+const test = ['a', 'b']
+
+const timer = setTimeout((a, b) => console.log(`here is your pizza ${a}, ${b}`),
+  3000,
+  ...test // can pass in an array of items
+)
+
+if (test.includes('a')) clearTimeout(timer) // can cancel the timer using clearTimeout
+
+
+
+
+//setInterval
+setInterval(function () {
+  const now = new Date()
+  // console.log(now)
+}, 1000)
+
+// will run the function over and over again after the interval 
+
