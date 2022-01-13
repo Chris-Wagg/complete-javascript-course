@@ -66,13 +66,6 @@ btnScrollTo.addEventListener('click', function (e) {
 
 
 
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // // selecting elements
@@ -195,3 +188,28 @@ btnScrollTo.addEventListener('click', function (e) {
 // logo.classList.contains('a')
 
 // // logo.classanme = 'banana' // dont use this because it will override what's there and will only allow one class 
+
+
+// ------------- events ------------------
+
+//eventListener allows for multiple events on 1 element with different functions
+
+const h1 = document.querySelector('h1')
+
+// h1.addEventListener('mouseenter', function (e) { // most common use
+//   alert('jeff: addeventlistener')
+// })
+
+// h1.onmouseenter = function (e) { // this is old shool
+//   alert('jeff: addeventlistener')
+// }
+
+const alertH1 = function (e) {
+  alert('jeff: addeventlistener')
+}
+
+h1.addEventListener('mouseenter', alertH1)
+
+
+// ------------removing event listeners 
+h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use setTimout etc
