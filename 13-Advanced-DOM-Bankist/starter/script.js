@@ -53,6 +53,10 @@ btnScrollTo.addEventListener('click', function (e) {
 
 
 
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // // selecting elements
@@ -234,13 +238,38 @@ h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use s
 
 // })
 
-// ---------------- capturing and bubbling --------------------------
+// // ---------------- capturing and bubbling --------------------------
 
-// event will pass all the way down from document to the target element, through all the parent elements.
+// // event will pass all the way down from document to the target element, through all the parent elements.
 
-// bubbling then travels all the way back up through the parent elements back to document
+// // bubbling then travels all the way back up through the parent elements back to document
 
-// as if the event had happened in all those parent elements
+// // as if the event had happened in all those parent elements
 
-//if you have the same event in one of those parent elements it would trigger that as well, even though it wasn't the exact target 
+// //if you have the same event in one of those parent elements it would trigger that as well, even though it wasn't the exact target
 
+// // basically just don't use the same event when it could affect parent elements.
+
+
+// const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
+// const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`
+
+// console.log(randomColor(0, 255))
+
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor()
+
+//   // e.stopPropagation() // one way to stop it but not really the best method
+// }, true) // can add a 3rd argumen to grab the event on the capture onstead of the bubble
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor()
+// })
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor()
+// })
+
+// // all 3 elements here will be affected by one event
