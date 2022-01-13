@@ -27,7 +27,6 @@ btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal))
 
 
 
-
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
@@ -39,8 +38,7 @@ document.addEventListener('keydown', function (e) {
 
 
 
-
-// scrolling
+// ---------- scrolling with learn more-------------
 const btnScrollTo = document.querySelector(
   '.btn--scroll-to'
 )
@@ -49,6 +47,20 @@ const section1 = document.querySelector('#section--1')
 btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' })
+})
+
+
+// --------- page nav scrolling ---------------
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault()
+
+
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href')
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
+
+  }
 })
 
 
@@ -178,32 +190,32 @@ btnScrollTo.addEventListener('click', function (e) {
 // logo.classList.toggle('a')
 // logo.classList.contains('a')
 
-// // logo.classanme = 'banana' // dont use this because it will override what's there and will only allow one class 
+// // logo.classanme = 'banana' // dont use this because it will override what's there and will only allow one class
 
 
 // ------------- events ------------------
 
-//eventListener allows for multiple events on 1 element with different functions
+// //eventListener allows for multiple events on 1 element with different functions
 
-const h1 = document.querySelector('h1')
+// const h1 = document.querySelector('h1')
 
-// h1.addEventListener('mouseenter', function (e) { // most common use
-//   alert('jeff: addeventlistener')
-// })
+// // h1.addEventListener('mouseenter', function (e) { // most common use
+// //   alert('jeff: addeventlistener')
+// // })
 
-// h1.onmouseenter = function (e) { // this is old shool
+// // h1.onmouseenter = function (e) { // this is old shool
+// //   alert('jeff: addeventlistener')
+// // }
+
+// const alertH1 = function (e) {
 //   alert('jeff: addeventlistener')
 // }
 
-const alertH1 = function (e) {
-  alert('jeff: addeventlistener')
-}
-
-h1.addEventListener('mouseenter', alertH1)
+// h1.addEventListener('mouseenter', alertH1)
 
 
-// ------------removing event listeners 
-h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use setTimout etc
+// // ------------removing event listeners
+// h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use setTimout etc
 
 
 
@@ -238,7 +250,7 @@ h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use s
 
 // })
 
-// // ---------------- capturing and bubbling --------------------------
+// // ---------------- capturing and bubbling -----------------------
 
 // // event will pass all the way down from document to the target element, through all the parent elements.
 
@@ -273,3 +285,35 @@ h1.removeEventListener('mouseenter', alertH1) // can put this anywhere, or use s
 // })
 
 // // all 3 elements here will be affected by one event
+
+
+
+
+// --------- page nav ---------------
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault()
+
+//     const id = this.getAttribute('href')
+
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
+
+//     console.log("link")
+//   })
+// })
+
+// ------ event delegation -------
+
+// add the event listener to the common parent element instead
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) { // adding the event listener to the parent element
+//   e.preventDefault()
+
+//   // need to match the target to the element
+//   if (e.target.classList.contains('nav__link')) { // grabbing the target to see if it has the correct element
+//     const id = e.target.getAttribute('href')
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
+
+//   }
+// })
