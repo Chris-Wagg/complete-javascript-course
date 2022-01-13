@@ -37,25 +37,32 @@ document.addEventListener('keydown', function (e) {
 });
 
 
+//old school way for smooth scrolling on button click
+const btnScrollTo = document.querySelector(
+  '.btn--scroll-to'
+)
+const section1 = document.querySelector('#section--1')
+
+btnScrollTo.addEventListener('click', function (e) {
+  // const s1coords = section1.getBoundingClientRect() // rect = rectangle, will tell you the size of the element box and its coords relative to the top of the viewport
+
+
+  //scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset) // top is always relative to the viewport, not the actual page. so will get jank if you try it when not scroleld right to the top
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth' // adds the animation
+  // })
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  //modern way
+  section1.scrollIntoView({ behavior: 'smooth' })
+})
 
 
 
