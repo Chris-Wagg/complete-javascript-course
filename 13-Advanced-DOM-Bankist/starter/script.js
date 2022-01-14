@@ -317,3 +317,49 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 //   }
 // })
+
+
+
+// ----------- DOM traversing ------------------ (rewatch this)
+
+const h1 = document.querySelector('h1')
+
+//selecting child elements
+
+console.log(h1.querySelectorAll('.highlight'))
+console.log(h1.childNodes)
+console.log(h1.children) // more used to grab the live elements but only for direct children
+
+// h1.firstElementChild.style.color = 'white'
+// h1.lastElementChild.style.color = 'white'
+
+
+// selecting parent elements
+
+console.log(h1.parentNode)
+console.log(h1.parentElement)
+
+
+// this is important for event delegation
+// opposite to querySelector. This finds parents no matter how far up the dom tree 
+h1.closest('.header').style.background = 'var(--gradient-secondary)'
+h1.closest('h1').style.background = 'var(--gradient-primary)'
+
+
+// selecting sibling elements (most used)
+console.log(h1.previousElementSibling) // is null because first child in this case
+console.log(h1.nextElementSibling)
+
+//node properties
+console.log(h1.previousSibling)
+console.log(h1.nextSibling)
+
+
+console.log(h1.parentElement.children) // go up and then down (html collection)
+
+
+// this doesn't work for some reason
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = 'scale(0.5)'
+// })
+
