@@ -63,6 +63,33 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 })
 
+// ---------- tabbed component ------------------
+
+const tabs = document.querySelectorAll('.operations__tab')
+const tabCon = document.querySelector('.operations__tab-container')
+const content = document.querySelectorAll('.operations__content')
+
+
+//not good practice because of how many times it could add this, need to event delegate
+// tabs.forEach(t => t.addEventListener('click', () => console.log('tab')))
+
+tabCon.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab')
+
+  // guard clause - will return early if condition is matched
+  if (!clicked) return // if null, then return
+
+  //remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'))
+  tabCon.forEach(c => c.classList.remove('operations__content--active'))
+
+  //activates tabs
+  clicked.classList.add('operations__tab--active')
+
+  //activate content
+  document.querySelector(`.'operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active')
+})
+
 
 
 
@@ -320,46 +347,46 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 
 
-// ----------- DOM traversing ------------------ (rewatch this)
+// // ----------- DOM traversing ------------------ (rewatch this)
 
-const h1 = document.querySelector('h1')
+// const h1 = document.querySelector('h1')
 
-//selecting child elements
+// //selecting child elements
 
-console.log(h1.querySelectorAll('.highlight'))
-console.log(h1.childNodes)
-console.log(h1.children) // more used to grab the live elements but only for direct children
+// console.log(h1.querySelectorAll('.highlight'))
+// console.log(h1.childNodes)
+// console.log(h1.children) // more used to grab the live elements but only for direct children
 
-// h1.firstElementChild.style.color = 'white'
-// h1.lastElementChild.style.color = 'white'
-
-
-// selecting parent elements
-
-console.log(h1.parentNode)
-console.log(h1.parentElement)
+// // h1.firstElementChild.style.color = 'white'
+// // h1.lastElementChild.style.color = 'white'
 
 
-// this is important for event delegation
-// opposite to querySelector. This finds parents no matter how far up the dom tree 
-h1.closest('.header').style.background = 'var(--gradient-secondary)'
-h1.closest('h1').style.background = 'var(--gradient-primary)'
+// // selecting parent elements
+
+// console.log(h1.parentNode)
+// console.log(h1.parentElement)
 
 
-// selecting sibling elements (most used)
-console.log(h1.previousElementSibling) // is null because first child in this case
-console.log(h1.nextElementSibling)
-
-//node properties
-console.log(h1.previousSibling)
-console.log(h1.nextSibling)
+// // this is important for event delegation
+// // opposite to querySelector. This finds parents no matter how far up the dom tree
+// h1.closest('.header').style.background = 'var(--gradient-secondary)'
+// h1.closest('h1').style.background = 'var(--gradient-primary)'
 
 
-console.log(h1.parentElement.children) // go up and then down (html collection)
+// // selecting sibling elements (most used)
+// console.log(h1.previousElementSibling) // is null because first child in this case
+// console.log(h1.nextElementSibling)
+
+// //node properties
+// console.log(h1.previousSibling)
+// console.log(h1.nextSibling)
 
 
-// this doesn't work for some reason
-// [...h1.parentElement.children].forEach(function (el) {
-//   if (el !== h1) el.style.transform = 'scale(0.5)'
-// })
+// console.log(h1.parentElement.children) // go up and then down (html collection)
+
+
+// // this doesn't work for some reason
+// // [...h1.parentElement.children].forEach(function (el) {
+// //   if (el !== h1) el.style.transform = 'scale(0.5)'
+// // })
 
