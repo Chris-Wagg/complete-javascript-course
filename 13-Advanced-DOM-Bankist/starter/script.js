@@ -19,13 +19,7 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-// for (let i = 0; i < btnsOpenModal.length; i++)
-//   btnsOpenModal[i].addEventListener('click', openModal);
-
-// replaces the above
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal))
-
-
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -35,8 +29,6 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
-
 
 // ---------- scrolling with learn more-------------
 const btnScrollTo = document.querySelector(
@@ -48,7 +40,6 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' })
 })
-
 
 // --------- page nav scrolling ---------------
 
@@ -65,34 +56,70 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 // ---------- tabbed component ------------------
 
-const tabs = document.querySelectorAll('.operations__tab')
-const tabCon = document.querySelector('.operations__tab-container')
-const content = document.querySelectorAll('.operations__content')
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
 
-//not good practice because of how many times it could add this, need to event delegate
-// tabs.forEach(t => t.addEventListener('click', () => console.log('tab')))
+  if (!clicked) return
 
-tabCon.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.operations__tab')
-
-  // guard clause - will return early if condition is matched
-  if (!clicked) return // if null, then return
-
-  //remove active classes
   tabs.forEach(t => t.classList.remove('operations__tab--active'))
-  tabCon.forEach(c => c.classList.remove('operations__content--active'))
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
 
-  //activates tabs
-  clicked.classList.add('operations__tab--active')
+  clicked.classList.add('operations__tab--active');
 
-  //activate content
-  document.querySelector(`.'operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active')
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 })
 
+// ----------- menu fade --------------- // rewatch this for bind
+const nav = document.querySelector('.nav')
+
+const hover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target
+    const sib = link.closest('.nav').querySelectorAll('.nav__link')
+
+    const logo = link.closest('.nav').querySelector('img')
+
+    sib.forEach(el => {
+      if (el !== link) el.style.opacity = this
+    })
+    logo.style.opacity = this
+  }
+}
+
+nav.addEventListener('mouseover', hover.bind(0.5))
+nav.addEventListener('mouseout', hover.bind(1))
 
 
 
+
+// ------------- sticky nav right way ----------------
+// with intersection observer api // watch this back
+
+const navH = nav.getBoundingClientRect().height
+const header = document.querySelector('.header')
+
+const stickyNav = function (entries) {
+  const [entry] = entries
+
+  if (!entry.isIntersecting)
+    nav.classList.add('sticky')
+  else
+    nav.classList.remove('sticky')
+}
+
+const headerOb = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navH}px`
+})
+
+headerOb.observe(header)
 
 
 
@@ -390,3 +417,115 @@ tabCon.addEventListener('click', function (e) {
 // //   if (el !== h1) el.style.transform = 'scale(0.5)'
 // // })
 
+
+
+
+// // ---------- tabbed component ------------------
+
+// const tabs = document.querySelectorAll('.operations__tab');
+// const tabsContainer = document.querySelector('.operations__tab-container');
+// const tabsContent = document.querySelectorAll('.operations__content');
+
+// //not good practice because of how many times it could add this, need to event delegate
+// // tabs.forEach(t => t.addEventListener('click', () => console.log('tab')))
+
+// tabsContainer.addEventListener('click', function (e) {
+//   const clicked = e.target.closest('.operations__tab');
+
+//   // guard clause - will return early if condition is matched
+//   if (!clicked) return // if null, then return
+
+//   //remove active classes
+//   tabs.forEach(t => t.classList.remove('operations__tab--active'))
+//   tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+
+//   //activates tabs
+//   clicked.classList.add('operations__tab--active');
+
+//   //activate content
+//   document
+//     .querySelector(`.operations__content--${clicked.dataset.tab}`)
+//     .classList.add('operations__content--active');
+// })
+
+
+// ----------- menu fade --------------- // rewatch this for bind
+// const nav = document.querySelector('.nav')
+
+// const hover = function (e) {
+//   if (e.target.classList.contains('nav__link')) {
+//     const link = e.target
+//     const sib = link.closest('.nav').querySelectorAll('.nav__link')
+
+//     const logo = link.closest('.nav').querySelector('img')
+
+//     sib.forEach(el => {
+//       if (el !== link) el.style.opacity = this
+//     })
+//     logo.style.opacity = this
+//   }
+// }
+
+// // passign an arg to a handler
+// nav.addEventListener('mouseover', hover.bind(0.5))
+// nav.addEventListener('mouseout', hover.bind(1))
+
+
+
+// nav.addEventListener('mouseover', function (e) {
+//   if (e.target.classList.contains('nav__link')) {
+//     const link = e.target
+//     const sib = link.closest('.nav').querySelectorAll('.nav__link')
+
+//     const logo = link.closest('.nav').querySelector('img')
+
+//     sib.forEach(el => {
+//       if (el !== link) el.style.opacity = 0.6
+//     })
+//     logo.style.opacity = 0.5
+//   }
+// }) // mouseover will bubble
+
+
+// nav.addEventListener('mouseout', function (e) {
+//   if (e.target.classList.contains('nav__link')) {
+//     const link = e.target
+//     const sib = link.closest('.nav').querySelectorAll('.nav__link')
+
+//     const logo = link.closest('.nav').querySelector('img')
+
+//     sib.forEach(el => {
+//       if (el !== link) el.style.opacity = 1
+//     })
+//     logo.style.opacity = 1
+//   }
+
+// })
+
+
+
+// // ------------- sticky nav ----------------
+// // not good way
+// const coord = section1.getBoundingClientRect()
+
+// window.addEventListener('scroll', function () {
+
+//   if (window.scrollY > coord.top) nav.classList.add('sticky')
+//   else nav.classList.remove('sticky')
+// })
+
+// // ------------- sticky nav right way ----------------
+// // with intersection observer api // watch this back
+
+// const obCB = function (entries, observer) {
+//   entries.forEach(entry => {
+//   })
+// }
+
+// const obOps = {
+//   root: null,
+//   threshold: [0, 0.2]
+// }
+
+// const ob = new IntersectionObserver(obCB, obOps)
+// ob.observe(section1)
