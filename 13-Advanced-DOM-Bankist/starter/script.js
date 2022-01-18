@@ -183,7 +183,8 @@ const maxSlide = slides.length
 let curSlide = 0
 
 const goToSlide = function (slide) {
-  slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+  slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`
+  )
 }
 
 goToSlide(0)
@@ -195,6 +196,7 @@ const nextSlide = function () {
     curSlide++
   }
   goToSlide(curSlide)
+  activateDot(curSlide)
 }
 
 const PreviousSlide = function () {
@@ -204,6 +206,7 @@ const PreviousSlide = function () {
     curSlide--
   }
   goToSlide(curSlide)
+  activateDot(curSlide)
 }
 
 btnR.addEventListener('click', nextSlide)
@@ -230,15 +233,22 @@ const createDots = function () {
   })
 }
 
+const activateDot = function (slide) {
+  document.querySelectorAll('.dots__dot').forEach(dot => dot.classList.remove('dots__dot--active'))
+
+  document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active')
+}
+
 createDots()
 
 // this doesn't work for some reason
-// dotContainer.addEventListener('click', function (e) {
-//   if (e.target.classList.contains('dots__dot')) {
-//     const slide = e.target.dataset.slide
-//     goToSlide(slide);
-//   }
-// })
+dotContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    const slide = e.target.dataset.slide
+    activateDot(slide)
+    goToSlide(slide);
+  }
+})
 
 
 
