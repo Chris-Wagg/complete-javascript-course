@@ -122,14 +122,123 @@ const headerOb = new IntersectionObserver(stickyNav, {
 headerOb.observe(header)
 
 
+// ------------- reveal elements on scroll ---------------------
+const section = document.querySelectorAll('.section')
+
+const reveal = function (entries, observer) {
+  const [entry] = entries
+
+  if (!entry.isIntersecting) return
+  entry.target.classList.remove('section--hidden')
+  observer.unobserve(entry.target)
+}
+
+const sectionOb = new IntersectionObserver(reveal, {
+  root: null,
+  threshold: 0.15
+})
+
+section.forEach(function (section) {
+  sectionOb.observe(section)
+  // section.classList.add('section--hidden')
+})
+
+
+// ------------- lazy image loading ------------------
+const imgt = document.querySelectorAll('img[data-src]')
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries
+
+  if (!entry.isIntersecting) return
+
+  // replacing the bad image with the good one
+  entry.target.src = entry.target.dataset.src
+
+  entry.target.addEventListener('load', function () {
+
+    entry.target.classList.remove('lazy-img')
+  })
+
+  observer.unobserve(entry.target)
+}
+
+const imgOb = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px'
+})
+
+imgt.forEach(img => imgOb.observe(img))
 
 
 
+// --------------- slider component --------------------
+
+const slides = document.querySelectorAll('.slide')
+const btnL = document.querySelector('.slider__btn--left')
+const btnR = document.querySelector('.slider__btn--right')
+const maxSlide = slides.length
+
+let curSlide = 0
+
+const goToSlide = function (slide) {
+  slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+}
+
+goToSlide(0)
+
+const nextSlide = function () {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0
+  } else {
+    curSlide++
+  }
+  goToSlide(curSlide)
+}
+
+const PreviousSlide = function () {
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1
+  } else {
+    curSlide--
+  }
+  goToSlide(curSlide)
+}
+
+btnR.addEventListener('click', nextSlide)
+btnL.addEventListener('click', PreviousSlide)
+
+// ----- with keyboard events -------
+
+document.addEventListener('keydown', function (e) {
+  // can do this either way, with an if statement or with short circuting
+  if (e.key === 'ArrowLeft') PreviousSlide()
+  e.key === 'ArrowRight' && nextSlide()
+})
 
 
+const dotContainer = document.querySelector('.dots');
 
 
+const createDots = function () {
+  slides.forEach(function (_, i) {
+    dotContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide="${i}"></button>`
+    )
+  })
+}
 
+createDots()
+
+// this doesn't work for some reason
+// dotContainer.addEventListener('click', function (e) {
+//   if (e.target.classList.contains('dots__dot')) {
+//     const slide = e.target.dataset.slide
+//     goToSlide(slide);
+//   }
+// })
 
 
 
@@ -542,3 +651,59 @@ headerOb.observe(header)
 
 // const ob = new IntersectionObserver(obCB, obOps)
 // ob.observe(section1)
+
+
+// // --------------- slider component --------------------
+
+// const slides = document.querySelectorAll('.slide')
+// const btnL = document.querySelector('.slider__btn--left')
+// const btnR = document.querySelector('.slider__btn--right')
+// const maxSlide = slides.length // reads he length from the node list
+
+// let curSlide = 0
+
+
+// // const slider = document.querySelector('.slider')
+// // slider.style.transform = 'scale(0.5)'
+// // slider.style.overflow = 'visible'
+
+// // slides.forEach((s, i) => s.style.transform = `translateX(${100 * i}%)`) // replaced with goToSlide(0)
+
+// const goToSlide = function (slide) {
+//   slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`)
+// }
+
+// goToSlide(0)
+
+// // next slide
+// // btnR.addEventListener('click', function () { // refactored below
+// //   if (curSlide === maxSlide - 1) {
+// //     curSlide = 0
+// //   } else {
+// //     curSlide++
+// //   }
+
+// // slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`) // replaced by goToSlide(curSlide)
+
+
+// const nextSlide = function () {
+//   if (curSlide === maxSlide - 1) {
+//     curSlide = 0
+//   } else {
+//     curSlide++
+//   }
+//   goToSlide(curSlide)
+// }
+// // })
+
+// const PreviousSlide = function () {
+//   if (curSlide === 0) {
+//     curSlide = maxSlide - 1
+//   } else {
+//     curSlide--
+//   }
+//   goToSlide(curSlide)
+// }
+
+// btnR.addEventListener('click', nextSlide)
+// btnL.addEventListener('click', PreviousSlide)
