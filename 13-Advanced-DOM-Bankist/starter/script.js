@@ -172,86 +172,91 @@ const imgOb = new IntersectionObserver(loadImg, {
 imgt.forEach(img => imgOb.observe(img))
 
 
+// ------------- slider component ---------------
 
-// --------------- slider component --------------------
+const slider = function () {
+  const slides = document.querySelectorAll('.slide');
+  const btnLeft = document.querySelector('.slider__btn--left');
+  const btnRight = document.querySelector('.slider__btn--right');
+  const dotContainer = document.querySelector('.dots');
 
-const slides = document.querySelectorAll('.slide')
-const btnL = document.querySelector('.slider__btn--left')
-const btnR = document.querySelector('.slider__btn--right')
-const maxSlide = slides.length
+  let curSlide = 0;
+  const maxSlide = slides.length;
 
-let curSlide = 0
+  // Functions
+  const createDots = function () {
+    slides.forEach(function (_, i) {
+      dotContainer.insertAdjacentHTML(
+        'beforeend',
+        `<button class="dots__dot" data-slide="${i}"></button>`
+      );
+    });
+  };
 
-const goToSlide = function (slide) {
-  slides.forEach((s, i) => s.style.transform = `translateX(${100 * (i - curSlide)}%)`
-  )
-}
+  const activateDot = function (slide) {
+    document
+      .querySelectorAll('.dots__dot')
+      .forEach(dot => dot.classList.remove('dots__dot--active'));
 
-goToSlide(0)
+    document
+      .querySelector(`.dots__dot[data-slide="${slide}"]`)
+      .classList.add('dots__dot--active');
+  };
 
-const nextSlide = function () {
-  if (curSlide === maxSlide - 1) {
-    curSlide = 0
-  } else {
-    curSlide++
-  }
-  goToSlide(curSlide)
-  activateDot(curSlide)
-}
+  const goToSlide = function (slide) {
+    slides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  };
 
-const PreviousSlide = function () {
-  if (curSlide === 0) {
-    curSlide = maxSlide - 1
-  } else {
-    curSlide--
-  }
-  goToSlide(curSlide)
-  activateDot(curSlide)
-}
+  // Next slide
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) {
+      curSlide = 0;
+    } else {
+      curSlide++;
+    }
 
-btnR.addEventListener('click', nextSlide)
-btnL.addEventListener('click', PreviousSlide)
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
 
-// ----- with keyboard events -------
+  const prevSlide = function () {
+    if (curSlide === 0) {
+      curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
 
-document.addEventListener('keydown', function (e) {
-  // can do this either way, with an if statement or with short circuting
-  if (e.key === 'ArrowLeft') PreviousSlide()
-  e.key === 'ArrowRight' && nextSlide()
-})
+  const init = function () {
+    goToSlide(0);
+    createDots();
 
+    activateDot(0);
+  };
+  init();
 
-const dotContainer = document.querySelector('.dots');
+  // Event handlers
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
 
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    e.key === 'ArrowRight' && nextSlide();
+  });
 
-const createDots = function () {
-  slides.forEach(function (_, i) {
-    dotContainer.insertAdjacentHTML(
-      'beforeend',
-      `<button class="dots__dot" data-slide="${i}"></button>`
-    )
-  })
-}
-
-const activateDot = function (slide) {
-  document.querySelectorAll('.dots__dot').forEach(dot => dot.classList.remove('dots__dot--active'))
-
-  document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active')
-}
-
-createDots()
-
-// this doesn't work for some reason
-dotContainer.addEventListener('click', function (e) {
-  if (e.target.classList.contains('dots__dot')) {
-    const slide = e.target.dataset.slide
-    activateDot(slide)
-    goToSlide(slide);
-  }
-})
-
-
-
+  dotContainer.addEventListener('click', function (e) {
+    if (e.target.classList.contains('dots__dot')) {
+      const { slide } = e.target.dataset;
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
+};
+slider();
 
 
 
@@ -717,3 +722,55 @@ dotContainer.addEventListener('click', function (e) {
 
 // btnR.addEventListener('click', nextSlide)
 // btnL.addEventListener('click', PreviousSlide)
+
+
+
+
+// // ----- with keyboard events -------
+
+// document.addEventListener('keydown', function (e) {
+//   // can do this either way, with an if statement or with short circuting
+//   if (e.key === 'ArrowLeft') PreviousSlide()
+//   e.key === 'ArrowRight' && nextSlide()
+// })
+
+
+// const dotContainer = document.querySelector('.dots');
+
+
+// const createDots = function () {
+//   slides.forEach(function (_, i) {
+//     dotContainer.insertAdjacentHTML(
+//       'beforeend',
+//       `<button class="dots__dot" data-slide="${i}"></button>`
+//     )
+//   })
+// }
+
+// const activateDot = function (slide) {
+//   document.querySelectorAll('.dots__dot').forEach(dot => dot.classList.remove('dots__dot--active'))
+
+//   document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active')
+// }
+
+// createDots()
+// activateDot(0)
+
+// // this doesn't work for some reason, potentially looking for the wrong class because the vid was working with the photos
+// dotContainer.addEventListener('click', function (e) {
+//   if (e.target.classList.contains('dots__dot')) {
+//     const slide = e.target.dataset.slide
+//     activateDot(slide)
+//     goToSlide(slide);
+//   }
+// })
+
+
+
+// ------------ lifecycle dom events -----------------
+
+// dom content loaded
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('Jeff', e)
+})
