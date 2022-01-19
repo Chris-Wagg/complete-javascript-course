@@ -764,13 +764,3 @@ slider();
 //     goToSlide(slide);
 //   }
 // })
-
-
-
-// ------------ lifecycle dom events -----------------
-
-// dom content loaded
-
-document.addEventListener('DOMContentLoaded', function (e) {
-  console.log('Jeff', e)
-})
