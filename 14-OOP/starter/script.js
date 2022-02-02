@@ -32,3 +32,14 @@ console.log(testOne)
 //function is called, this(keyword) = {empty object}
 // {} is linked to prototype
 // funtion automatically returns {}
+
+
+// -------------------- prototypes -----------------------------
+console.log(Person.prototype)
+
+// makes only one copy
+Person.prototype.calcAge = function () {
+    console.log(2022 - this.year)
+}
+
+test.calcAge()
