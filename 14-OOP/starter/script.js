@@ -9,7 +9,7 @@
 
 // constructors start with capitals
 // arrow functions dont work here becaue it doesn't have 'this'
-const Person = function (first, year) {
+const Person = function (first, year) { // this is the constructor
     this.first = first,
         this.year = year
 
@@ -34,7 +34,7 @@ console.log(testOne)
 // funtion automatically returns {}
 
 
-// -------------------- prototypes -----------------------------
+// -------------------- prototypes ----------------------------- watch this back
 console.log(Person.prototype)
 
 // makes only one copy
@@ -43,3 +43,12 @@ Person.prototype.calcAge = function () {
 }
 
 test.calcAge()
+
+// set properties on the prototype
+
+Person.prototype.species = 'walking person'
+console.log(test.species)
+
+//check for properties
+console.log(test.hasOwnProperty('first')) // true because it's on the object
+console.log(test.hasOwnProperty('species')) // false because it's not on the object, just has access through the prototype
