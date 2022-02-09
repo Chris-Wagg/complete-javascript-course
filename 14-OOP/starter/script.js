@@ -87,7 +87,7 @@
 
 
 
-// --------------- classes ---------------------
+// // --------------- classes ---------------------
 
 // class expression
 // const PersonCl = class {
@@ -96,28 +96,50 @@
 
 // class declaration
 class PersonCl {
-    constructor(firstName, birthYear) {
-        this.firstName = firstName,
+    constructor(fullname, birthYear) {
+        this.fullname = fullname,
             this.birthYear = birthYear
     }
-    // methods here
+    // methods here // instanced methods
 
     calcAge() {
         console.log(2022 - this.birthYear)
     }
 
     greet() {
-        console.log(`hi ${this.firstName}`)
+        console.log(`hi ${this.fullname}`)
+    }
+    // using a getter, just like any other method. Will be in the proto
+    get age() {
+        return 2022 - this.birthYear
+    }
+    // using a setter to set a property that already exits
+    set fullname(name) {
+        console.log(name)
+        if (name.includes(' ')) this._fullname = name // use the _ to mane a new var and avoid conflicts
+        else alert(`${name} is not a name`)
+    }
+
+    get fullname() {
+        return this._fullname
+    }
+
+    //static method
+    static hey() {
+        console.log('hello there static method')
     }
 }
 
-const jeff = new PersonCl('Jeff', 1969)
+PersonCl.hey()
+
+const jeff = new PersonCl('Jeff jefferson', 1969)
 
 jeff.calcAge()
+console.log(jeff.age)
 
 
 // PersonCl.prototype.greet = function () {
-//     console.log(`hi ${this.firstName}`)
+//     console.log(`hi ${this.fullname}`)
 // }
 
 jeff.greet()
@@ -126,6 +148,52 @@ jeff.greet()
 // classes not hoisted at all
 // classes are first class citizens, can pass and return from functions
 // class body are executed in strict
+
+const walter = new PersonCl('walter white', 1969)
+
+
+// --------------- getters and setters ------------------------ // watch back
+
+const account = {
+    owner: 'jeff',
+    movements: [1, 2, 3, 4, 5],
+
+    //getter
+    get latest() {
+        return this.movements.slice(-1).pop()
+    },
+
+    //setter // needs at least 1 property
+    set latest(mov) {
+        this.movements.push(mov)
+    }
+}
+
+console.log(account.latest) // use the getter just like it's a property, dont need to call it
+
+
+// using the setter
+account.latest = 50
+console.log(account.movements)
+
+
+// ----------------- static methods ---------------------------
+
+// Person.hey = function () {
+//     console.log('Hi there')
+// }
+
+// Person.hey()
+
+
+
+
+
+
+
+
+
+
 
 
 
