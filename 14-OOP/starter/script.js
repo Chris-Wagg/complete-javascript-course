@@ -89,18 +89,43 @@
 
 // --------------- classes ---------------------
 
+// class expression
+// const PersonCl = class {
+
+// }
+
+// class declaration
+class PersonCl {
+    constructor(firstName, birthYear) {
+        this.firstName = firstName,
+            this.birthYear = birthYear
+    }
+    // methods here
+
+    calcAge() {
+        console.log(2022 - this.birthYear)
+    }
+
+    greet() {
+        console.log(`hi ${this.firstName}`)
+    }
+}
+
+const jeff = new PersonCl('Jeff', 1969)
+
+jeff.calcAge()
 
 
+// PersonCl.prototype.greet = function () {
+//     console.log(`hi ${this.firstName}`)
+// }
+
+jeff.greet()
 
 
-
-
-
-
-
-
-
-
+// classes not hoisted at all
+// classes are first class citizens, can pass and return from functions
+// class body are executed in strict
 
 
 
